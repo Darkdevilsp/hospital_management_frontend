@@ -36,27 +36,36 @@ const DoctorLogin = (props) => {
     };
 
     return (
-        <div className={"loginBox"}>
+        <div>
+            {user==="None"?
 
-            <h2>Doctor Login</h2>
-            <div className={"form-container"}>
-            <form>
-                <label>
-                    Username:
-                    <input type="text" value={username} placeholder={"Enter Username"} onChange={(e) => setUsername(e.target.value)} />
-                </label>
-                <br />
-                <label>
-                    Password:
-                    <input type="password" value={password} placeholder={"Enter Password"} onChange={(e) => setPassword(e.target.value)} />
-                </label>
-                <br />
-                <button type="button" onClick={handleLogin}>
-                    Login
-                </button><br/>
-                <p>New user? <Link to={"/doctorSignup"}>Signup Here</Link></p>
-            </form>
+                <div className={"loginBox"}>
+                    <h2>Doctor Login</h2>
+                    <div className={"form-container"}>
+                    <form>
+                        <label>
+                            Username:
+                            <input type="text" value={username} placeholder={"Enter Username"} onChange={(e) => setUsername(e.target.value)} />
+                        </label>
+                        <br />
+                        <label>
+                            Password:
+                            <input type="password" value={password} placeholder={"Enter Password"} onChange={(e) => setPassword(e.target.value)} />
+                        </label>
+                        <br />
+                        <button type="button" onClick={handleLogin}>
+                            Login
+                        </button><br/>
+                        <p>New user? <Link to={"/doctorSignup"}>Signup Here</Link></p>
+                    </form>
+                        </div>
                 </div>
+                :
+                user==="doctor"?
+                    <p>You have already logged in</p>
+                    :
+                    <p>You are not a doctor</p>
+            }
         </div>
     );
 };

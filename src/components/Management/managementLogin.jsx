@@ -33,24 +33,33 @@ const ManagementLogin = (props) => {
     };
 
     return (
-        <div className={"loginBox"}>
-            <h2>Management Login</h2>
-            <div className={"form-container"}>
-            <form onSubmit={handleLogin}>
-                <label>
-                    Username:
-                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                </label>
-                <br />
-                <label>
-                    Password:
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                </label>
-                <br />
-                <button type="submit">Login</button>
-            </form>
-            <p>New user? <Link to="/managementSignup">Signup Here</Link></p>
-            </div>
+        <div>
+            {user==="None"?
+                <div className={"loginBox"}>
+                    <h2>Management Login</h2>
+                    <div className={"form-container"}>
+                    <form onSubmit={handleLogin}>
+                        <label>
+                            Username:
+                            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        </label>
+                        <br />
+                        <label>
+                            Password:
+                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        </label>
+                        <br />
+                        <button type="submit">Login</button>
+                    </form>
+                    <p>New user? <Link to="/managementSignup">Signup Here</Link></p>
+                    </div>
+                </div>
+                :
+                user==="management"?
+                    <p>You have already logged in</p>
+                    :
+                    <p>You are not a management</p>
+            }
         </div>
     );
 };

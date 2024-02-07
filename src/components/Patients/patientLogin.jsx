@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './patientlogin.css';
@@ -6,6 +6,7 @@ import './patientlogin.css';
 function PatientLogin (props) {
     // eslint-disable-next-line react/prop-types
     const {user,setuser}=props
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -43,26 +44,26 @@ function PatientLogin (props) {
                     <h1>you have already logged in </h1>
                 </div>
                 : user==="None"?
-                <div>
-                    <h2>Patient Login</h2>
-                    <div className={"form-container"}>
+                    <div>
+                        <h2>Patient Login</h2>
+                        <div className={"form-container"}>
 
-                        <form onSubmit={handleLogin}>
-                            <label>
-                                Username:
-                                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                            </label>
-                            <br />
-                            <label>
-                                Password:
-                                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                            </label>
-                            <br />
-                            <button type="submit">Login</button>
-                        </form>
-                        <p>New user? <Link to="/patientSignup">Signup Here</Link></p>
+                            <form onSubmit={handleLogin}>
+                                <label>
+                                    Username:
+                                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                                </label>
+                                <br />
+                                <label>
+                                    Password:
+                                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                </label>
+                                <br />
+                                <button type="submit">Login</button>
+                            </form>
+                            <p>New user? <Link to="/patientSignup">Signup Here</Link></p>
+                        </div>
                     </div>
-                </div>
                     :
                     <div>
                         <h1>you dont have access to this page</h1>

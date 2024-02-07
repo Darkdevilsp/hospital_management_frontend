@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import './patientsignup.css';
-function PatientSignup() {
+function PatientSignup(props) {
     const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const {user,setUser}=props
 
     async function handleSignup() {
         try {
@@ -52,6 +53,9 @@ function PatientSignup() {
     }
 
     return (
+        <div>
+            {user==="None"?
+
         <div className={"signupBox"}>
             <h2>PATIENT SIGNUP</h2>
             <div className={"signform-container"}>
@@ -78,6 +82,13 @@ function PatientSignup() {
                 Already have an account? <Link to={"/patientLogin"}>LOGIN</Link>
             </form>
             </div>
+        </div>
+                :
+                user==="patient"?
+                <p>you have already logged in</p>
+                    :
+                    <p>You are not a patient go back to you dashboard</p>
+            }
         </div>
     );
 }

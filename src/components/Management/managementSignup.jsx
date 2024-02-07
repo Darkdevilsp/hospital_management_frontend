@@ -3,12 +3,13 @@ import  {useState} from "react";
 import axios from "axios";
 
 
-function ManagementSignup()
+function ManagementSignup(props)
 {
     const [name2,setName2]=useState()
     const [username2,setUsername2]=useState()
     const [password2,setPassword2]=useState()
     const navigate = useNavigate();
+    const {user,setUser}=props
 
     async function handleSignup() {
         try {
@@ -54,6 +55,8 @@ function ManagementSignup()
     }
 
     return (
+        <div>
+            {user==="None"?
         <div className={"signupBox"}>
             <h2>MANAGEMENT SIGNUP</h2>
             <div className={"signform-container"}>
@@ -80,6 +83,13 @@ function ManagementSignup()
                 Already have an account? <Link to={"/managementLogin"}>LOGIN</Link>
             </form>
             </div>
+        </div>
+    :
+    user==="management"?
+        <p>You have already logged in</p>
+        :
+        <p>You are not a management</p>
+            }
         </div>
     );
 }
