@@ -11,9 +11,7 @@ import ManagementSignup from "./components/Management/managementSignup.jsx";
 import DoctorSignup from "./components/Doctors/doctorSignup.jsx"; // Import the CSS file for styling
 import PatientDashboard from "./components/Patients/patientDashboard.jsx";
 import DoctorDashboard from "./components/Doctors/doctorDashboard.jsx";
-//import ManagementDashboard from "./components/Management/managementDashboard.jsx";
-
-import Dashboard from "./Pages/Dashboard/Dashboard.jsx"
+import ManagementDashboard from "./components/Management/managementDashboard.jsx";
 const App = () => {
 
     const [user, setUser] = useState(sessionStorage.getItem('user') || "None");
@@ -56,7 +54,7 @@ const App = () => {
                     <Route path={"/doctorSignup"} element={<DoctorSignup user={user} setuser={setUser}/>}/>
                     <Route path={"/p/:username/Dashboard"} element={<PatientDashboard user={user} setuser={setUser}/>}/>
                     <Route path={"/d/:username/Dashboard"} element={<DoctorDashboard user={user} setuser={setUser}/>}/>
-                    <Route path={"/m/:username/Dashboard"} element={<Dashboard user={user} setuser={setUser}/>}/>
+                    <Route path={"/m/:username/Dashboard"} element={<ManagementDashboard user={user} setuser={setUser}/>}/>
                 </Routes>
             </div>
         </Router>

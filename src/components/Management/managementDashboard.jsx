@@ -1,4 +1,5 @@
-import { useParams } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Staffs from "../../Pages/Staffs/Staffs";
 import Appointment from "../../Pages/Appointments/Appointment";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
@@ -6,7 +7,6 @@ import AddDoctor from "../../Pages/Doctors/AddDoctor/AddDoctor";
 import Registration from "../../Pages/Login/Registration/Registration";
 import PatientViewDoctor from "../../Pages/Doctors/Doctors/PatientViewDoctor";
 import Login from "../../Pages/Login/Login";
-import PageNotFound from ".../../Pages/PageNotFound/PageNotFound";
 import ViewDoctors from "../../Pages/Patients/ViewDoctors/ViewDoctors";
 import DeleteDoctor from "../../Pages/Doctors/DeleteDoctor/DeleteDoctor";
 import FindDoctor from "../../Pages/Doctors/UpdateDoctor/FindDoctor";
@@ -14,7 +14,8 @@ import AddPatient from "../../Pages/Patients/AddPatients/AddPatient";
 import Patients from "../../Pages/Patients/Patients/Patients";
 import PatientDetails from "../../Pages/Patients/PatientsDetails/PatientDetails";
 import ApproveDoctor from "../../Pages/Doctors/ApproveDoctor/ApproveDoctor";
-import './App.css';
+import PageNotFound from "../../Pages/PageNotFound/PageNotFound.jsx";
+
 
 function ManagementDashboard() {
     const { username } = useParams();
@@ -42,6 +43,7 @@ function ManagementDashboard() {
                 <Route path="registration" element={<Registration />} />
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
+
         </div>
     );
 }
