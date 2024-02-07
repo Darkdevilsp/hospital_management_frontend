@@ -1,0 +1,36 @@
+/* Reset some default styles for consistent rendering */
+body,
+div,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Set up a background color for the entire site */
+body {
+    background-color:darkslategray /* Light gray background color */
+}
+
+/* Style the root element (often a div with id=root) */
+
+
+/* Add additional global styles as needed */
+a {
+    color: #3498db; /* Blue link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Add more styles based on your design preferences */
