@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 // import {useState} from "react";
 //import axios from "axios";
 
@@ -20,7 +20,7 @@ function PatientDashboard(props){
                             <p>details</p>
                         </div>
                         <div className={"bookings"}>
-                            <button>Book Appointment</button>
+                            <Link to={`/p/${username}/appointment`}> <button>Book Appointment</button></Link>
                             <button>Diagnosis</button>
                             <button>Past records</button>
                         </div>
