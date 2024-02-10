@@ -14,7 +14,7 @@ const ViewDoctors = () => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetch("http://localhost:5000/approvedDoctors")
+    fetch("http://localhost:4000/approvedDoctors")
       .then((res) => res.json())
       .then((data) => {
         setDoctors(data);

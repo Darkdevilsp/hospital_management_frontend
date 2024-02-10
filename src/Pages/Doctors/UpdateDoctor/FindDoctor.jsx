@@ -14,7 +14,7 @@ const FindDoctor = () => {
   console.log(doctors);
 
   useEffect(() => {
-    fetch("http://localhost:5000/approvedDoctors")
+    fetch("http://localhost:4000/approvedDoctors")
       .then((res) => res.json())
       .then((data) => setDoctors(data));
   }, []);

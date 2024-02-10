@@ -1,35 +1,35 @@
 /* Navigation Bar */
 .topnav {
-    background-color: #333; /* Dark background color */
+    background-color: #6C5B7B; /* Set navbar color to match the theme */
     overflow: hidden;
-    padding: 1px;
+    padding: 8px 16px; /* Adjust padding */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out items */
+    align-items: center; /* Center items vertically */
 }
 
 .topnav a {
-    float: left;
-    display: block;
     color: white;
-    text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
+    transition: color 0.3s; /* Smooth transition for text color */
 }
 
 .topnav a:hover {
-    background-color: #555; /* Darker background color on hover */
+    color: #6C5B7B; /* Change text color on hover */
 }
 
 .topnav button {
-    float: right;
-    background-color: #4CAF50; /* Green button color */
+    background-color: #6C5B7B; /* Set button color to match navbar */
     color: white;
     border: none;
-    padding: 8px 16px;
-    margin: 5px;
+    padding: 8px 16px; /* Adjust padding */
     cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for background color */
 }
 
 .topnav button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: white; /* Change button color on hover */
+    color: #6C5B7B; /* Change text color on hover */
 }
 
 /* General Layout */
@@ -44,25 +44,30 @@ label {
     margin-bottom: 10px;
 }
 
-input {
+input, textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-button {
-    background-color: #3498db; /* Blue button color */
+button, .btn {
+    background-color: #6C5B7B; /* Set initial button color */
     color: white;
-    padding: 10px 20px;
+    padding: 10px 20px; /* Adjust padding */
     font-size: 16px;
     cursor: pointer;
     border: none;
     border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
-button:hover {
-    background-color: #2979bd; /* Darker blue on hover */
+button:hover, .btn:hover {
+    background-color: white; /* Change button color on hover */
+    color: #6C5B7B; /* Change text color on hover */
 }
 
-/* Add more styles based on your design preferences */
+/* Additional Styles */
+/* Customize based on your design preferences */

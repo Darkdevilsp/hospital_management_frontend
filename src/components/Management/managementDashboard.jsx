@@ -1,5 +1,5 @@
-import {useParams} from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Staffs from "../../Pages/Staffs/Staffs";
 import Appointment from "../../Pages/Appointments/Appointment";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
@@ -15,35 +15,38 @@ import Patients from "../../Pages/Patients/Patients/Patients";
 import PatientDetails from "../../Pages/Patients/PatientsDetails/PatientDetails";
 import ApproveDoctor from "../../Pages/Doctors/ApproveDoctor/ApproveDoctor";
 import PageNotFound from "../../Pages/PageNotFound/PageNotFound.jsx";
+import Home from "../../Pages/Home/Home/Home.jsx";
+import Footer from "../../Pages/Shared/Footer/Footer.jsx"
 
 
 function ManagementDashboard() {
-    const { username } = useParams();
     return (
-        <div>
-            <h1>Welcome {username}</h1>
+        <div className="App">
             <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="doctors" element={<PatientViewDoctor />} />
-                <Route path="addDoctor" element={<AddDoctor />} />
-                <Route path="approveDoctor" element={<ApproveDoctor />} />
-                <Route path="deleteDoctor" element={<DeleteDoctor />} />
-                <Route path="updateDoctor" element={<FindDoctor />} />
-                <Route path="patients" element={<Patients />} />
-                <Route path="addPatient" element={<AddPatient />}>
-                    <Route path=":email" element={<AddPatient />} />
+                {/* NESTED ROUTING APPLIED */}
+                <Route path="/" element={<Dashboard />} >
+                    <Route index element={<Home />} />
+                    <Route path="doctors" element={<PatientViewDoctor />} />
+                    <Route path="/doctors/add" element={<AddDoctor />} />
+                    <Route path="approveDoctor" element={<ApproveDoctor />} />
+                    <Route path="deleteDoctor" element={<DeleteDoctor />} />
+                    <Route path="updateDoctor" element={<FindDoctor />} />
+                    <Route path="patients" element={<Patients />} />
+                    <Route path="addPatient" element={<AddPatient />}>
+                        <Route path=":email" element={<AddPatient />} />
+                    </Route>
+                    <Route path="viewDoctors" element={<ViewDoctors />} />
+                    <Route path="patientDetails/:id" element={<PatientDetails />} />
+                    <Route path="staffs" element={<Staffs />} />
+                    <Route path="appointment" element={<Appointment />}>
+                        <Route path=":email" element={<Appointment />} />
+                    </Route>
+                    <Route path="login" element={<Login />} />
+                    <Route path="registration" element={<Registration />} />
+                    <Route path="*" element={<PageNotFound />} />
                 </Route>
-                <Route path="viewDoctors" element={<ViewDoctors />} />
-                <Route path="patientDetails/:id" element={<PatientDetails />} />
-                <Route path="staffs" element={<Staffs />} />
-                <Route path="appointment" element={<Appointment />}>
-                    <Route path=":email" element={<Appointment />} />
-                </Route>
-                <Route path="login" element={<Login />} />
-                <Route path="registration" element={<Registration />} />
-                <Route path="*" element={<PageNotFound />} />
             </Routes>
-
+            <Footer />
         </div>
     );
 }

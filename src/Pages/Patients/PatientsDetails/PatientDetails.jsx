@@ -11,7 +11,7 @@ const PatientDetails = () => {
   const [details, setDetails] = useState({})
   console.log(details)
   useEffect(() => {
-    fetch(`http://localhost:5000/patients/${id}`)
+    fetch(`http://localhost:4000/patients/${id}`)
       .then(res => res.json())
       .then(data => setDetails(data))
   }, [id])

@@ -14,12 +14,12 @@ import approvalIcon from '../../../utils/no-approval.png'
 export default function ApproveDoctor() {
     const [data, setData] = React.useState([]);
     React.useEffect(() => {
-        fetch("http://localhost:5000/pendingDoctors")
+        fetch("http://localhost:4000/pendingDoctors")
             .then((res) => res.json())
             .then((data) => setData(data));
     }, [data]);
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/doctors/${id}`, {
+        fetch(`http://localhost:4000/doctors/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
@@ -29,12 +29,12 @@ export default function ApproveDoctor() {
                 }
             });
         // update the data
-        fetch("http://localhost:5000/pendingDoctors")
+        fetch("http://localhost:4000/pendingDoctors")
             .then((res) => res.json())
             .then((data) => setData(data));
     };
     const handleApprove = (id) => {
-        fetch(`http://localhost:5000/approve/${id}`, {
+        fetch(`http://localhost:4000/approve/${id}`, {
             method: "PUT",
         })
             .then((res) => res.json())
@@ -44,7 +44,7 @@ export default function ApproveDoctor() {
                 }
             });
         // update the data
-        fetch("http://localhost:5000/pendingDoctors")
+        fetch("http://localhost:4000/pendingDoctors")
             .then((res) => res.json())
             .then((data) => setData(data));
     };

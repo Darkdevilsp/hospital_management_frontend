@@ -63,10 +63,11 @@ const AddDoctor = () => {
     formData.append("image", image); // <-- append the image to the formData
     formData.append("created_at", date);
     formData.append("approved", true);
-    fetch("http://localhost:5000/doctors", {
+    fetch("http://localhost:4000/doctors", {
       method: "POST",
-      body: formData, // <-- send the formData in the body of the request
+      body: formData,
     })
+
       .then((res) => res.json())
       .then((success) => {
         if (success) {

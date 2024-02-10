@@ -13,24 +13,40 @@ li {
 
 body {
     font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2; /* Light gray background color */
+    color: #333; /* Default text color */
 }
 
 /* Set up a background color for the entire site */
-body {
-    background-color:darkslategray /* Light gray background color */
-}
+/* No need to repeat body styling */
 
 /* Style the root element (often a div with id=root) */
-
+/* No specific styling for the root element */
 
 /* Add additional global styles as needed */
 a {
     color: #3498db; /* Blue link color */
     text-decoration: none;
+    transition: color 0.3s; /* Smooth transition for link color */
 }
 
 a:hover {
+    color: #217dbb; /* Darker blue on hover */
     text-decoration: underline;
 }
 
-/* Add more styles based on your design preferences */
+/* Customize the color scheme */
+/* Feel free to adjust these colors based on your design preferences */
+/* For example: */
+body {
+    background-color: #15202b; /* Dark background color */
+    color: #fff; /* White text color */
+}
+
+a {
+    color: #64b5f6; /* Light blue link color */
+}
+
+a:hover {
+    color: #bbdefb; /* Lighter blue on hover */
+}
