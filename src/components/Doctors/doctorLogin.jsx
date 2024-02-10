@@ -40,7 +40,7 @@ const DoctorLogin = (props) => {
             {user==="None"?
 
                 <div className={"loginBox"}>
-                    <h2>Doctor Login</h2>
+                    <h2 className='Title'>Doctor Login</h2>
                     <div className={"form-container"}>
                     <form>
                         <label>

@@ -5,7 +5,6 @@ import Banner from '../Banner/Banner';
 import DetailsChart from '../DetailsChart/DetailsChart';
 import AlzheimerPrediction from '../Feedback/Feedback';  
 import RadialChart from '../PatientAgeChart/RadialChart';
-import TodaysDoctors from '../TodaysDoctors/TodaysDoctors';
 import UserInfo from '../UserInfo/UserInfo';
 
 const Home = () => {

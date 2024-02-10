@@ -1,6 +1,6 @@
 /* Navigation Bar */
 .topnav {
-    background-color: #6C5B7B; /* Set navbar color to match the theme */
+    background-color: #6a5b7b; /* Set navbar color to match the theme */
     overflow: hidden;
     padding: 8px 16px; /* Adjust padding */
     display: flex; /* Use flexbox for layout */
@@ -34,7 +34,7 @@
 
 /* General Layout */
 .container {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
