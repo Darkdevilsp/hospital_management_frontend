@@ -10,7 +10,7 @@ import UserInfo from '../UserInfo/UserInfo';
 
 const Home = () => {
   return (
-    <div style={{ paddingTop: '80px' }}> {/* Adjust padding to prevent navbar overlap */}
+    <div style={{ paddingTop: '60px' }}> {/* Adjust padding to prevent navbar overlap */}
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
           <Banner />
@@ -33,7 +33,6 @@ const Home = () => {
           </Box>
         </Grid>
       </Grid>
-      <TodaysDoctors />
     </div>
   );
 };
