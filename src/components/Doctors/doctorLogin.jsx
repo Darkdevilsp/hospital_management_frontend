@@ -56,7 +56,6 @@ const DoctorLogin = (props) => {
                         <button type="button" onClick={handleLogin}>
                             Login
                         </button><br/>
-                        <p>New user? <Link to={"/doctorSignup"}>Signup Here</Link></p>
                     </form>
                         </div>
                 </div>

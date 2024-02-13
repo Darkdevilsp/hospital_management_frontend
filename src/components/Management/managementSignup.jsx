@@ -56,7 +56,7 @@ function ManagementSignup(props)
 
     return (
         <div>
-            {user==="None"?
+            {user==="Admin"?
         <div className={"signupBox"}>
             <h2>MANAGEMENT SIGNUP</h2>
             <div className={"signform-container"}>
@@ -85,10 +85,7 @@ function ManagementSignup(props)
             </div>
         </div>
     :
-    user==="management"?
-        <p>You have already logged in</p>
-        :
-        <p>You are not a management</p>
+        <p>Only admins has access to this page</p>
             }
         </div>
     );

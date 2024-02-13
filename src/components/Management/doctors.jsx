@@ -50,7 +50,7 @@ function Doctors() {
 
             </div>
             <br/>
-            <Link to={"/doctorSignup"}><button>Add Doctor</button></Link>
+            <Link to={`/m/${username}/doctorSignup`}><button>Add Doctor</button></Link>
             {username === "admin" && <button>Doctor requests</button>}
             <hr />
             <h1>Doctors</h1>

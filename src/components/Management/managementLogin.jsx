@@ -21,7 +21,14 @@ const ManagementLogin = (props) => {
             console.log(response.data);
 
             if (response.data === 'you are ready to login') {
-                setuser("management")
+                if(username==="Admin")
+                {
+                    setuser("Admin")
+                }else
+                {
+                    setuser("management")
+                }
+
                 navigate(`/m/${username}/Dashboard`);
             } else {
                 alert("User doesn't exist or incorrect credentials");
@@ -51,7 +58,6 @@ const ManagementLogin = (props) => {
                         <br />
                         <button type="submit">Login</button>
                     </form>
-                    <p>New user? <Link to="/managementSignup">Signup Here</Link></p>
                     </div>
                 </div>
                 :

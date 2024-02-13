@@ -14,6 +14,7 @@ import ManagementDashboard from "./components/Management/managementDashboard.jsx
 import AppointmentBooking from "./components/Patients/appointmentBooking.jsx";
 import HeartDisease from './Pages/HeartDiseasePrediction/heartDisease.jsx';
 import Doctors from "./components/Management/doctors.jsx";
+import Staff from "./components/Management/Staff.jsx";
 
 const App = () => {
     const [user, setUser] = useState(sessionStorage.getItem('user') || "None");
@@ -39,7 +40,7 @@ const App = () => {
                                 <Link to="/doctorLogin"><button>DOCTOR LOGIN</button></Link>
                                 <Link to="/managementLogin"><button>MANAGEMENT LOGIN</button></Link>
                             </div>
-                        ) : user === "management" ? (
+                        ) : user === "management" || user==="Admin" ? (
                             <div>
                                 <Link to={"/m/:username/patients"} ><button>PATIENTS</button></Link>
                                 <Link to={"/m/:username/doctors"}><button>DOCTORS</button></Link>
@@ -59,13 +60,14 @@ const App = () => {
                         <Route path="/managementLogin" element={<ManagementLogin user={user} setuser={setUser} />} />
                         <Route path="/patientSignup" element={<PatientSignup user={user} setuser={setUser} />} />
                         <Route path="/managementSignup" element={<ManagementSignup user={user} setuser={setUser} />} />
-                        <Route path="/doctorSignup" element={<DoctorSignup user={user} setuser={setUser} />} />
+                        <Route path="/m/:username/doctorSignup" element={<DoctorSignup user={user} setuser={setUser} />} />
                         <Route path="/p/:username/Dashboard" element={<PatientDashboard user={user} setuser={setUser} />} />
                         <Route path="/d/:username/Dashboard" element={<DoctorDashboard user={user} setuser={setUser} />} />
                         <Route path="/m/:username/Dashboard/*" element={<ManagementDashboard user={user} setuser={setUser} />} />
                         <Route path="/p/:username/appointment" element={<AppointmentBooking />} />
-                        <Route path="/m/:username/appointment" element={<Doctors />} />
+                        <Route path="/m/:username/doctors" element={<Doctors />} />
                         <Route path="/p/:username/heartDisease" element={<HeartDisease />} />
+                        <Route path="/m/:username/staff" element={<Staff />} />
                     </Routes>
                 </div>
             </Router>

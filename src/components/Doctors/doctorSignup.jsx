@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import "./doctorSignup.css"
 
@@ -54,9 +54,13 @@ function DoctorSignup(props) {
         setName1(x);
     }
 
+    useEffect(() => {
+        console.log(user)
+    }, []);
+
     return (
         <div>
-            {user==="None"?
+            {user==="Admin" ?
                 <div className={"signupBox"}>
                     <h2>Doctor Signup</h2>
                     <div className={"signform-container"}>
@@ -80,15 +84,11 @@ function DoctorSignup(props) {
                             SIGNUP
                         </button>
                         <br />
-                        Already have an account? <Link to={"/doctorLogin"}>LOGIN</Link>
                     </form>
                     </div>
                 </div>
                 :
-                user==="doctor"?
-                    <p>You have already logged in</p>
-                    :
-                    <p>You dont have access to this page</p>
+                    <p>Only admins has access to this page .if you are admin please login</p>
             }
         </div>
     );
