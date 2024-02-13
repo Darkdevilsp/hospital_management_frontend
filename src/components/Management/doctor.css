@@ -1,0 +1,49 @@
+.container {
+    margin: 0;
+    padding: 20px;
+    justify-content: flex-start;
+}
+
+.header {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.count h2 {
+    margin-right: 20px;
+    display: inline-flex;
+    color: #f0f0f0;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.doctorCard {
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    justify-content: flex-start; /* Align items to start */
+}
+
+.offline {
+    background-color: red;
+}
+
+.available {
+    background-color: green;
+}
+
+.busy {
+    background-color: orange;
+}
+h1{
+    color: white;
+}
