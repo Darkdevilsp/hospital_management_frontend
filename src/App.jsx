@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './Pages/Home/Home/Home.jsx';
@@ -13,21 +12,19 @@ import PatientDashboard from "./components/Patients/patientDashboard.jsx";
 import DoctorDashboard from "./components/Doctors/doctorDashboard.jsx";
 import ManagementDashboard from "./components/Management/managementDashboard.jsx";
 import AppointmentBooking from "./components/Patients/appointmentBooking.jsx";
-
+import HeartDisease from './Pages/HeartDiseasePrediction/heartDisease.jsx'; // Import HeartDisease component
 
 const App = () => {
-
     const [user, setUser] = useState(sessionStorage.getItem('user') || "None");
-    // Update sessionStorage when user state changes
+
     useEffect(() => {
         sessionStorage.setItem('user', user);
     }, [user]);
 
     function handleLogout() {
         setUser("None");
-        sessionStorage.removeItem('user'); // Remove user authentication from sessionStorage on logout
+        sessionStorage.removeItem('user');
     }
-
 
     return (
         <div className={"completebody"}>
@@ -59,6 +56,7 @@ const App = () => {
                         <Route path="/d/:username/Dashboard" element={<DoctorDashboard user={user} setuser={setUser} />} />
                         <Route path="/m/:username/Dashboard/*" element={<ManagementDashboard user={user} setuser={setUser} />} />
                         <Route path="/p/:username/appointment" element={<AppointmentBooking />} />
+                        <Route path="/heartDisease" element={<HeartDisease />} />
                     </Routes>
 
                 </div>
