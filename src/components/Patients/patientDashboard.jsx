@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./patient.css";
 
 function PatientDashboard(props) {
     const { user, setuser } = props;
@@ -21,23 +22,23 @@ function PatientDashboard(props) {
     }, []);
 
     return (
-        <div>
+        <div className="patient-dashboard">
             {user === "None" ?
                 <p>You don't have access to this page. Please go back to the home page and log in.</p>
                 :
                 user === "patient" ?
                     <div>
                         <h1>Welcome {username}</h1>
-                        <div className="personalDetails">
+                        <div className="personal-details">
                             <h3>Personal Details</h3>
                             <p>Details</p>
                         </div>
                         <div className="bookings">
                             <Link to={`/p/${username}/appointment`}><button>Book Appointment</button></Link>
-                            <button>Diagnosis</button>
+                            <Link to={'/p/:username/heartDisease'}><button>Heart disease prediction</button></Link>
                             <button>Past Records</button>
                         </div>
-                        <div>
+                        <div className="appointments">
                             <h4>Appointments</h4>
                             <ul>
                                 {appointments.map((appointment) => {
