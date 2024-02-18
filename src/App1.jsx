@@ -1,6 +1,6 @@
 // App1.jsx
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import {Routes, Route, useParams} from 'react-router-dom';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Home from './Pages/Home/Home/Home';
 import PatientViewDoctor from './Pages/Doctors/Doctors/PatientViewDoctor';
@@ -19,7 +19,9 @@ import Registration from './Pages/Login/Registration/Registration';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import Footer from './Pages/Shared/Footer/Footer';
 
+
 function App1() {
+    const {username}=useParams()
     return (
         <div className="App">
             <Routes>

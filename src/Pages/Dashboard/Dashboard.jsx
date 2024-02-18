@@ -15,7 +15,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { NavLink } from 'react-router-dom';
+import {NavLink, useParams} from 'react-router-dom';
 import { FaMandalorian, FaRunning, FaUserNurse } from "react-icons/fa";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { MdOutlinePersonAddAlt, MdOutlinePersonRemoveAlt1, MdOutlinePersonSearch } from 'react-icons/md';
@@ -76,6 +76,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function NewHeader() {
+    const {username}=useParams()
     const [open, setOpen] = React.useState(true);
 
     const handleDrawerOpen = () => {
@@ -133,7 +134,7 @@ export default function NewHeader() {
                 <Divider />
                 {/* Links for routing */}
                 <List>
-                    <NavLink to="/" style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
+                    <NavLink to='/m/:username/Dashboard' style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
                         <ListItem disablePadding>
                             <ListItemButton style={{ borderRadius: '0 40px 40px 0' }}>
                                 <ListItemIcon>
@@ -170,7 +171,7 @@ export default function NewHeader() {
                     >
                         <TreeItem nodeId="1" label="Doctors"
                             style={{ color: '#000', background: '#FFFFFF' }}>
-                            <NavLink to="/m/:username/Dashboard/doctors" style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
+                            <NavLink to="/m/:username/Dashboard/appointment" style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
                                 <ListItem disablePadding>
                                     <ListItemButton style={{ borderRadius: '0 40px 40px 0' }}>
                                         <ListItemIcon>
@@ -262,7 +263,7 @@ export default function NewHeader() {
                     >
                         <TreeItem nodeId="1" label="Patient"
                             style={{ color: '#000', background: '#FFFFFF' }}>
-                            <NavLink to="/patients" style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
+                            <NavLink to="/m/:username/Dashboard/patients" style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
                                 <ListItem disablePadding>
                                     <ListItemButton style={{ borderRadius: '0 40px 40px 0' }}>
                                         <ListItemIcon>
@@ -272,7 +273,7 @@ export default function NewHeader() {
                                     </ListItemButton>
                                 </ListItem>
                             </NavLink>
-                            <NavLink to="/viewDoctors" style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
+                            <NavLink to="/m/:username/Dashboard/addPatient" style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
                                 <ListItem disablePadding>
                                     <ListItemButton style={{ borderRadius: '0 40px 40px 0' }}>
                                         <ListItemIcon>
@@ -296,7 +297,7 @@ export default function NewHeader() {
                         </ListItem>
                     </NavLink> */}
 
-                    <NavLink to="/Staffs" style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
+                    <NavLink to="/m/:username/Dashboard/Staffs" style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
                         <ListItem disablePadding>
                             <ListItemButton style={{ borderRadius: '0 40px 40px 0' }}>
                                 <ListItemIcon>
@@ -306,16 +307,7 @@ export default function NewHeader() {
                             </ListItemButton>
                         </ListItem>
                     </NavLink>
-                    <NavLink to="/login" style={{ textDecoration: 'none', width: '100%', color: '#000' }}>
-                        <ListItem disablePadding>
-                            <ListItemButton style={{ borderRadius: '0 40px 40px 0' }}>
-                                <ListItemIcon>
-                                    <LoginIcon style={{ color: '#000', fontSize: '1.5rem' }} />
-                                </ListItemIcon>
-                                <ListItemText primary="Login" />
-                            </ListItemButton>
-                        </ListItem>
-                    </NavLink>
+
 
                 </List>
             </Drawer>
