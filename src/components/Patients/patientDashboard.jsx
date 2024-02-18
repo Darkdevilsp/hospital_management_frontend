@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./patient.css";
 
 function PatientDashboard(props) {
     const { user, setuser } = props;

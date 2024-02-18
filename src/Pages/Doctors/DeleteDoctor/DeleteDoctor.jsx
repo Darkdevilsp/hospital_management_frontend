@@ -17,7 +17,7 @@ export default function DeleteDoctor() {
   // let data = queryClient.getQueryData(['approvedDoctors']);
 
   const fetchApprovedDoctors = async () => {
-    let response = await fetch("http://localhost:4000/approvedDoctors")
+    let response = await fetch("http://localhost:5000/approvedDoctors")
     const data = await response.json()
     return data;
   }
@@ -29,7 +29,7 @@ export default function DeleteDoctor() {
   console.log(data)
 
   const handleDelete = async (id) => {
-    const response = await fetch(`http://localhost:4000/doctors/${id}`, {
+    const response = await fetch(`http://localhost:5000/doctors/${id}`, {
       method: 'DELETE'
     });
     const data = await response.json();

@@ -1,10 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './Index.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import './Index.css';
+import Index from './index';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// Create a new instance of QueryClient
+const queryClient = new QueryClient();
+
+// Wrap your application with QueryClientProvider
+ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <Index />
+    </QueryClientProvider>
   </React.StrictMode>,
-)
+  document.getElementById('root')
+);

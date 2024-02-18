@@ -21,7 +21,7 @@ const AlzheimerPrediction = () => {
 
     formData.append('image', fileInput.files[0]);
 
-    axios.post('http://127.0.0.1:4000/predictAlzheimer', formData)
+    axios.post('http://127.0.0.1:5000/predictAlzheimer', formData)
       .then(response => {
         setPredictionResult(response.data.result);
         setErrorMessage(null);

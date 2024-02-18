@@ -118,7 +118,7 @@ export default function PatientViewDoctor() {
   // }, []);
   
   const fetchApprovedDoctors = async () => {
-    let response = await fetch("http://localhost:4000/approvedDoctors")
+    let response = await fetch("http://localhost:5000/approvedDoctors")
     console.log('fetching data...')
     const data = await response.json()
     return data;

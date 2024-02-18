@@ -14,7 +14,7 @@ export default function TodaysDoctors() {
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("http://localhost:4000/doctors")
+    fetch("http://localhost:5000/doctors")
       .then((res) => res.json())
       .then((data) => {
         setDoctors(data);
