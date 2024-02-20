@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './Index.css';
 import Index from './index';
@@ -7,12 +7,14 @@ import Index from './index';
 // Create a new instance of QueryClient
 const queryClient = new QueryClient();
 
+// Create a root with createRoot
+const root = createRoot(document.getElementById('root'));
+
 // Wrap your application with QueryClientProvider
-ReactDOM.render(
+root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Index />
     </QueryClientProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
