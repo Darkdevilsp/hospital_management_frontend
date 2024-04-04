@@ -1,4 +1,4 @@
-/* Navigation Bar */
+
 .topnav {
     background-color: #6a5b7b; /* Set navbar color to match the theme */
     overflow: hidden;
@@ -32,13 +32,13 @@
     color: #6C5B7B; /* Change text color on hover */
 }
 
-/* General Layout */
+
 .container {
     max-width: 700px;
     margin: 0 auto;
 }
 
-/* Form Elements */
+
 label {
     display: block;
     margin-bottom: 10px;
@@ -54,20 +54,18 @@ input, textarea {
 }
 
 button, .btn {
-    background-color: #6C5B7B; /* Set initial button color */
+    background-color: #6C5B7B;
     color: white;
-    padding: 10px 20px; /* Adjust padding */
+    padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, color 0.3s;
 }
 
 button:hover, .btn:hover {
-    background-color: white; /* Change button color on hover */
-    color: #6C5B7B; /* Change text color on hover */
+    background-color: white;
+    color: #6C5B7B;
 }
 
-/* Additional Styles */
-/* Customize based on your design preferences */

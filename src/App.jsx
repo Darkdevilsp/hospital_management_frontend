@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import App1 from './App1'; // Importing App1 component
@@ -12,10 +11,11 @@ import ManagementSignup from "./components/Management/managementSignup.jsx";
 import DoctorSignup from "./components/Doctors/doctorSignup.jsx";
 import PatientDashboard from "./components/Patients/patientDashboard.jsx";
 import DoctorDashboard from "./components/Doctors/doctorDashboard.jsx";
-import ManagementDashboard from "./components/Management/managementDashboard.jsx";
+//import ManagementDashboard from "./components/Management/managementDashboard.jsx";
 import AppointmentBooking from "./components/Patients/appointmentBooking.jsx";
 import Doctors from "./components/Management/doctors.jsx";
 import Staff from "./components/Management/Staff.jsx";
+import ManagementDashboard from "./components/Management/managementDashboard.jsx";
 
 const App = () => {
     const [user, setUser] = useState(sessionStorage.getItem('user') || "None");
@@ -31,7 +31,6 @@ const App = () => {
 
     return (
         <div className={"completebody"}>
-            <div>
                 <div className="topnav">
                     <Link to="/"><button>HOME</button></Link>
                     {user === "None" ? (
@@ -52,7 +51,9 @@ const App = () => {
                     )}
 
                 </div>
+                <br/>
 
+                <div>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/patientLogin" element={<PatientLogin user={user} setuser={setUser} />} />
@@ -66,9 +67,11 @@ const App = () => {
                     <Route path="/p/:username/appointment" element={<AppointmentBooking />} />
                     <Route path="/m/:username/doctors" element={<Doctors />} />
                     <Route path="/m/:username/staff" element={<Staff />} />
-                    <Route path="/m/:username/Dashboard/*" element={<App1 />} />
+                    {/* <Route path="/m/:username/Dashboard" element={<App1 />} /> */}
+                    <Route path="/m/:username/Dashboard" element={<ManagementDashboard />} />
                 </Routes>
-            </div>
+                </div>
+
         </div>
     );
 };

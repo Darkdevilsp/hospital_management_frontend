@@ -1,23 +1,6 @@
-/* Reset some default styles for consistent rendering */
-h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 10%;
-}
-
 body {
     font-family: 'Arial', sans-serif;
     background-color: #15202b; /* Dark background color */
     color: #fff; /* White text color */
 }
 
-/* Style links */
-a {
-    color: #64b5f6; /* Light blue link color */
-    text-decoration: none;
-    transition: color 0.3s; /* Smooth transition for link color */
-}
-
-a:hover {
-    color: #bbdefb; /* Lighter blue on hover */
-    text-decoration: underline;
-}

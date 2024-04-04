@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./patient.css"
 
 function PatientDashboard(props) {
     const { user, setuser } = props;
@@ -31,6 +32,7 @@ function PatientDashboard(props) {
                         <div className="personal-details">
                             <h3>Personal Details</h3>
                             <p>Details</p>
+
                         </div>
                         <div className="bookings">
                             <Link to={`/p/${username}/appointment`}><button>Book Appointment</button></Link>
