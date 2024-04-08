@@ -16,6 +16,7 @@ import AppointmentBooking from "./components/Patients/appointmentBooking.jsx";
 import Doctors from "./components/Management/doctors.jsx";
 import Staff from "./components/Management/Staff.jsx";
 import ManagementDashboard from "./components/Management/managementDashboard.jsx";
+import Hdp from "./components/Patients/hdp.jsx";
 
 const App = () => {
     const [user, setUser] = useState(sessionStorage.getItem('user') || "None");
@@ -69,6 +70,7 @@ const App = () => {
                     <Route path="/m/:username/staff" element={<Staff />} />
                     {/* <Route path="/m/:username/Dashboard" element={<App1 />} /> */}
                     <Route path="/m/:username/Dashboard" element={<ManagementDashboard />} />
+                    <Route path={"/p/:username/hdp"} element={<Hdp />}></Route>
                 </Routes>
                 </div>
 

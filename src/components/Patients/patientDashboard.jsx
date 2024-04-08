@@ -1,12 +1,13 @@
-import { Link, useParams } from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./patient.css"
+
 
 function PatientDashboard(props) {
     const { user, setuser } = props;
     const { username } = useParams();
     const [appointments, setAppointments] = useState([]);
-
+    const navigate =useNavigate();
     useEffect(() => {
         const fetchAppointments = async () => {
             try {
@@ -20,6 +21,10 @@ function PatientDashboard(props) {
 
         fetchAppointments();
     }, []);
+
+    function handleHdp() {
+        navigate(`/p/${username}/hdp`)
+    }
 
     return (
         <div className="patient-dashboard">
@@ -36,7 +41,7 @@ function PatientDashboard(props) {
                         </div>
                         <div className="bookings">
                             <Link to={`/p/${username}/appointment`}><button>Book Appointment</button></Link>
-                            <Link to={'/p/:username/heartDisease'}><button>Heart disease prediction</button></Link>
+                            <button onClick={handleHdp}>Heart disease prediction</button>
                             <button>Past Records</button>
                         </div>
                         <div className="appointments">
