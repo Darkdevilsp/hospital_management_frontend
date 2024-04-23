@@ -17,6 +17,7 @@ const Hdp = () => {
         ca: '',
         thal: ''
     });
+    const [prediction, setPrediction] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -28,43 +29,28 @@ const Hdp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            const response = await fetch('https://your-backend-url.com/endpoint', {
+            const response = await fetch('http://127.0.0.1:5000/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             });
-
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Failed to fetch prediction');
             }
-
-            // Optionally handle the response from the server
-            const responseData = await response.json();
-            console.log(responseData); // You can do something with the response from the server
-
-            // Optionally reset the form after successful submission
-            setFormData({
-                age: '',
-                sex: '',
-                cp: '',
-                trestbps: '',
-                chol: '',
-                fbs: '',
-                restecg: '',
-                thalach: '',
-                exang: '',
-                oldpeak: '',
-                slope: '',
-                ca: '',
-                thal: ''
-            });
-
+            const data = await response.json();
+            setPrediction(data.prediction);
+            if(prediction===1){
+                alert("You may have a disease consult a doctor")
+            }
+            else{
+                alert("You are healthy")
+            }
         } catch (error) {
-            console.error('There was a problem with the fetch operation:', error);
+            console.error(error);
+            // Handle error
         }
     };
 
@@ -73,72 +59,85 @@ const Hdp = () => {
         <div className="form-container">
             <h1>Heart Disease Form</h1>
             <form onSubmit={handleSubmit}>
-                <label>
-                    Age:
-                    <input type="text" name="age" value={formData.age} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Sex:
-                    <input type="text" name="sex" value={formData.sex} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    CP:
-                    <input type="text" name="cp" value={formData.cp} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Trestbps:
-                    <input type="text" name="trestbps" value={formData.trestbps} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Chol:
-                    <input type="text" name="chol" value={formData.chol} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    FBS:
-                    <input type="text" name="fbs" value={formData.fbs} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Restecg:
-                    <input type="text" name="restecg" value={formData.restecg} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Thalach:
-                    <input type="text" name="thalach" value={formData.thalach} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Exang:
-                    <input type="text" name="exang" value={formData.exang} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Oldpeak:
-                    <input type="text" name="oldpeak" value={formData.oldpeak} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Slope:
-                    <input type="text" name="slope" value={formData.slope} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    CA:
-                    <input type="text" name="ca" value={formData.ca} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Thal:
-                    <input type="text" name="thal" value={formData.thal} onChange={handleChange} />
-                </label>
-                <br />
-                <button type="submit">Submit</button>
+                <label htmlFor="age">Age</label>
+                <input type="text" id="age" name="age" value={formData.age} onChange={handleChange}
+                       placeholder="Your age.."/><br/>
+
+                <label htmlFor="sex">Sex</label>
+                <select id="sex" name="sex" value={formData.sex} onChange={handleChange}>
+                    <option value="">----select option----</option>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select><br/>
+
+                <label htmlFor="cp">Chest Pain Type</label>
+                <select id="cp" name="cp" value={formData.cp} onChange={handleChange}>
+                    <option value="">----select option----</option>
+                    <option value="0">Typical Angina</option>
+                    <option value="1">Atypical Angina</option>
+                    <option value="2">Non-anginal Pain</option>
+                    <option value="3">Asymptomatic</option>
+                </select><br/>
+
+                <label htmlFor="trestbps">Resting Blood Pressure</label>
+                <input type="text" id="trestbps" name="trestbps" value={formData.trestbps} onChange={handleChange}
+                       placeholder="A number in range [94-200] mmHg"/><br/>
+
+                <label htmlFor="chol">Serum Cholesterol</label>
+                <input type="text" id="chol" name="chol" value={formData.chol} onChange={handleChange}
+                       placeholder="A number in range [126-564] mg/dl"/><br/>
+
+                <label htmlFor="fbs">Fasting Blood Sugar</label>
+                <select id="fbs" name="fbs" value={formData.fbs} onChange={handleChange}>
+                    <option value="">----select option----</option>
+                    <option value="1">Greater than 120 mg/dl</option>
+                    <option value="0">Less than 120 mg/dl</option>
+                </select><br/>
+
+                <label htmlFor="restecg">Resting ECG Results</label>
+                <select id="restecg" name="restecg" value={formData.restecg} onChange={handleChange}>
+                    <option value="">----select option----</option>
+                    <option value="0">Normal</option>
+                    <option value="1">Having ST-T wave abnormality</option>
+                    <option value="2">Probable or definite left ventricular hypertrophy</option>
+                </select><br/>
+
+                <label htmlFor="thalach">Max Heart Rate</label>
+                <input type="text" id="thalach" name="thalach" value={formData.thalach} onChange={handleChange}
+                       placeholder="A number in range [71-202] bpm"/><br/>
+
+                <label htmlFor="exang">Exercise-induced Angina</label>
+                <select id="exang" name="exang" value={formData.exang} onChange={handleChange}>
+                    <option value="">----select option----</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select><br/>
+
+                <label htmlFor="oldpeak">ST Depression</label>
+                <input type="text" id="oldpeak" name="oldpeak" value={formData.oldpeak} onChange={handleChange}
+                       placeholder="ST depression, typically in [0-6.2]"/><br/>
+
+                <label htmlFor="slope">Slope of the peak exercise ST segment</label>
+                <select id="slope" name="slope" value={formData.slope} onChange={handleChange}>
+                    <option value="">----select option----</option>
+                    <option value="0">Upsloping</option>
+                    <option value="1">Flat</option>
+                    <option value="2">Downsloping</option>
+                </select><br/>
+
+                <label htmlFor="ca">Number of Major Vessels</label>
+                <input type="text" id="ca" name="ca" value={formData.ca} onChange={handleChange}
+                       placeholder="Typically in [0-4]"/><br/>
+
+                <label htmlFor="thal">Thalassemia</label>
+                <select id="thal" name="thal" value={formData.thal} onChange={handleChange}>
+                    <option value="">----select option----</option>
+                    <option value="0">Normal</option>
+                    <option value="1">Fixed Defect</option>
+                    <option value="2">Reversible Defect</option>
+                </select><br/>
+
+                <input type="submit" className="my-cta-button" value="Predict"/>
             </form>
         </div>
     );
