@@ -42,7 +42,7 @@ const Hdp = () => {
             }
             const data = await response.json();
             setPrediction(data.prediction);
-            if(prediction===1){
+            if(prediction===0){
                 alert("You may have a disease consult a doctor")
             }
             else{

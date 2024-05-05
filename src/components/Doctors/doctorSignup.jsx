@@ -1,32 +1,39 @@
-import {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
-import "./doctorSignup.css"
+import {useNavigate} from "react-router-dom";
 
+function DoctorSignup() {
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
+    const [gender, setGender] = useState("male");
+    const [phoneNo, setPhoneNo] = useState("");
+    const [address, setAddress] = useState("");
+    const [designation, setDesignation] = useState("");
+    const [error, setError] = useState("");
+    const [email,setEmail]=useState("")
+    const [password,setPassword]=useState()
+    const navigate=useNavigate()
 
-function DoctorSignup(props) {
-    const [name1, setName1] = useState("");
-    const [username1, setUsername1] = useState("");
-    const [password1, setPassword1] = useState("");
-    const navigate = useNavigate();
-    const {user,setUser}=props
-
-    async function handleSignup() {
-        try {
+    async function handleSubmit() {
+        try{
             const response = await axios.post("http://localhost:4000/doctorSignup", {
-                name: name1,
-                username: username1,
-                password: password1,
+                name: name,
+                age:age,
+                gender:gender,
+                email:email,
+                phoneNo:phoneNo,
+                address:address,
+                designation:designation,
+                password: password
             });
 
             const ans = response.data;
-            console.log("ans: " + ans);
-
+            console.log(ans)
             if (ans === "User already exists") {
                 alert(ans);
             } else if (ans === "Added successfully") {
                 alert(ans);
-                navigate('/doctorLogin');
+
             } else {
                 alert(ans);
             }
@@ -42,54 +49,53 @@ function DoctorSignup(props) {
         }
     }
 
-    function handlePassword(x) {
-        setPassword1(x);
-    }
-
-    function handleUsername(x) {
-        setUsername1(x);
-    }
-
-    function handleName(x) {
-        setName1(x);
-    }
-
-    useEffect(() => {
-        console.log(user)
-    }, []);
-
     return (
-        <div>
-            {user==="Admin" ?
-                <div className={"signupBox"}>
-                    <h2>Doctor Signup</h2>
-                    <div className={"signform-container"}>
-                    <form className={"signup"}>
-                        <label>
-                            Name:<br />
-                            <input type={"text"} value={name1} placeholder={"Enter your name"} onChange={(e) => handleName(e.target.value)} />
-                        </label>
-                        <br />
-                        <label>
-                            Username:<br />
-                            <input type="text" placeholder={"Enter username"} value={username1} onChange={(e) => handleUsername(e.target.value)} />
-                        </label>
-                        <br />
-                        <label>
-                            Password:<br />
-                            <input type="password" placeholder={"Enter password"} value={password1} onChange={(e) => handlePassword(e.target.value)} />
-                        </label>
-                        <br />
-                        <button type="button" onClick={handleSignup}>
-                            SIGNUP
-                        </button>
-                        <br />
-                    </form>
-                    </div>
+        <div className="container">
+            <h1>Add Doctor</h1>
+            {error && <p>{error}</p>}
+            <form>
+                <div>
+                    <label>Name:</label>
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} required/>
                 </div>
-                :
-                    <p>Only admins has access to this page .if you are admin please login</p>
-            }
+                <div>
+                    <label>Age:</label>
+                    <input type="number" value={age} onChange={(e) => setAge(e.target.value)} required/>
+                </div>
+                <div>
+                    <label>Gender:</label>
+                    <select value={gender} onChange={(e) => setGender(e.target.value)} required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Phone Number:</label>
+                    <input type="tel" value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} required/>
+                </div>
+                <div>
+                    <label>Address:</label>
+                    <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required/>
+                </div>
+                <div>
+                    <label>Designation:</label>
+                    <input type="text" value={designation} onChange={(e) => setDesignation(e.target.value)} required/>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                </div>
+                <label>Password</label>
+                <input
+                    type={"password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <button type="button" onClick={handleSubmit}>
+                    SIGNUP
+                </button>
+            </form>
         </div>
     );
 }
