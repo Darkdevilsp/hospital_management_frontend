@@ -52,7 +52,7 @@ const App = () => {
                     )}
 
                 </div>
-                <br/>
+                
 
                 <div>
                 <Routes>

@@ -1,4 +1,7 @@
 
+body{
+    margin: 0;
+}
 .topnav {
     background-color: #6a5b7b; /* Set navbar color to match the theme */
     overflow: hidden;

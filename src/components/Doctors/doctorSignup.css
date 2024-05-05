@@ -1,73 +1,36 @@
-/* Signup Box Styles */
-.signupBox {
+.signupContainer {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    height: 100vh;
-}
-
-/* Form Container Styles */
-.signform-container {
-    max-width: 400px;
-    width: 90%;
-    background-color: #f2f2f2;
+    height: 90vh;
+    background-image: url('https://www.storyblocks.com/images/stock/health-and-medical-background-with-doctor-swbgcffrx_wj6gonicd');
+    background-size: cover;
+    background-position: center;
+    max-width: 1500px;
+  }
+  
+  .signupBox {
+    width: 400px;
     padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for the form */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e0e0e0;
-    box-sizing: border-box;
-}
-
-/* Form Elements */
-.signform-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.signform-container label {
-    display: block;
-    margin-bottom: 15px;
-    font-size: 16px;
-    color: #333333;
-}
-
-.signform-container input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.signform-container button {
-    width: 100%;
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.signform-container button:hover {
-    background-color: #0056b3;
-}
-
-.signform-container .login-link {
+    position: absolute;
+    right: 15%;
     margin-top: 10px;
-    text-align: center;
-}
-
-.signform-container .login-link a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.signform-container .login-link a:hover {
-    text-decoration: underline;
-}
+  }
+  
+  .signupBox form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .signupBox form > * {
+    margin-bottom: 20px;
+  }
+  
+  .signupBox form > button {
+    margin-top: 20px;
+  }
+  
