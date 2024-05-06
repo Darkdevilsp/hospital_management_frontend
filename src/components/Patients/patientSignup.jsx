@@ -18,11 +18,11 @@ function PatientSignup(props) {
         try {
             const response = await axios.post("http://localhost:4000/patientSignup", {
                 name: name,
-                password: password,
                 email: email,
                 phoneNo: phoneNo,
                 address: address,
-                bloodGroup: bloodGroup
+                bloodGroup: bloodGroup,
+                password: password
             });
 
             const ans = response.data;
