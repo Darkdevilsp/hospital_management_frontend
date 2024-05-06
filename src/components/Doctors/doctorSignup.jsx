@@ -1,39 +1,40 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Container, Typography, TextField, Button, Box, Select, MenuItem } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import doctorImage from "../../utils/loginpage.png"
+import doctorImage from "../../utils/loginpage.png";
+import "./doctorSignup.css";
+import {useNavigate} from "react-router-dom"; // Import your CSS file
 
 const genders = ["Male", "Female"];
 
 const DoctorSignup = () => {
-    const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        name: "",
-        age: "",
-        gender: "Male",
-        phoneNo: "",
-        address: "",
-        designation: "",
-        email: "",
-        password: "",
-    });
+    const navigate = useNavigate()
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
+    const [gender, setGender] = useState("Male");
+    const [phoneNo, setPhoneNo] = useState("");
+    const [address, setAddress] = useState("");
+    const [designation, setDesignation] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4000/doctorSignup", formData);
-            const { data } = response;
-            alert(data);
-            if (data === "Added successfully") {
-                navigate("/login"); // Redirect to login page after successful signup
+            const response = await axios.post("http://localhost:4000/doctorSignup", {
+                name: name,
+                age: age,
+                gender: gender,
+                phoneNo: phoneNo,
+                address: address,
+                designation: designation,
+                email: email,
+                password: password,
+            });
+            const ans = response.data;
+            console.log(ans);
+            if (ans === "Added successfully") {
+                alert(ans)
+                navigate("/m/:username/doctors");
             }
         } catch (error) {
             console.error("Error during signup:", error);
@@ -48,107 +49,90 @@ const DoctorSignup = () => {
     };
 
     return (
-        <Container className="signupContainer" style={{
-            backgroundImage: `url(${doctorImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            display: 'flex',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-            height: '92vh',
-            maxWidth: '1600px'
-        }}>
-            <Box sx={{ width: '40%', background: 'white', padding: '5px 25px', marginTop: '20px', position: 'relative' }} component="form" onSubmit={handleSubmit}>
-                <Typography variant="h5" sx={{ color: 'black', textAlign: 'center' }} gutterBottom>
-                    ADD DOCTOR
-                </Typography>
-                <TextField
+        <div className="signupContainer" style={{ backgroundImage: `url(${doctorImage})` }}>
+            <form className="signupForm" onSubmit={handleSubmit}>
+                <h2 className="signupHeading">ADD DOCTOR</h2>
+                <input
+                    type="text"
                     name="name"
-                    label="Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    margin="dense"
-                    fullWidth
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="signupInput"
                     required
                 />
-                <TextField
-                    name="age"
-                    label="Age"
+                <input
                     type="number"
-                    value={formData.age}
-                    onChange={handleChange}
-                    margin="dense"
-                    sx={{ width: '50%' }}
+                    name="age"
+                    placeholder="Age"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    className="signupInput"
                     required
                 />
-                <Select
+                <select
                     name="gender"
-                    value={formData.gender}
-                    onChange={handleChange}
-                    margin="normal"
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    className="signupInput"
                     required
-                    sx={{ float: 'right', position: 'absolute', top: '121px', marginLeft: '10px', width: '40%'}}
-
                 >
                     {genders.map((gender) => (
-                        <MenuItem key={gender} value={gender}>
+                        <option key={gender} value={gender}>
                             {gender}
-                        </MenuItem>
+                        </option>
                     ))}
-                </Select>
-                <TextField
-                    name="phoneNo"
-                    label="Phone Number"
+                </select>
+                <input
                     type="tel"
-                    value={formData.phoneNo}
-                    onChange={handleChange}
-                    margin="dense"
-                    fullWidth
+                    name="phoneNo"
+                    placeholder="Phone Number"
+                    value={phoneNo}
+                    onChange={(e) => setPhoneNo(e.target.value)}
+                    className="signupInput"
                     required
                 />
-                <TextField
+                <input
+                    type="text"
                     name="address"
-                    label="Address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    margin="dense"
-                    fullWidth
+                    placeholder="Address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    className="signupInput"
                     required
                 />
-                <TextField
+                <input
+                    type="text"
                     name="designation"
-                    label="Designation"
-                    value={formData.designation}
-                    onChange={handleChange}
-                    margin="dense"
-                    fullWidth
+                    placeholder="Designation"
+                    value={designation}
+                    onChange={(e) => setDesignation(e.target.value)}
+                    className="signupInput"
                     required
                 />
-                <TextField
-                    name="email"
-                    label="Email"
+                <input
                     type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    margin="dense"
-                    fullWidth
+                    name="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="signupInput"
                     required
                 />
-                <TextField
-                    name="password"
-                    label="Password"
+                <input
                     type="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    margin="dense"
-                    fullWidth
+                    name="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="signupInput"
                     required
                 />
-                <Button type="submit" variant="contained" color="secondary" sx={{ marginTop: "10px" }} fullWidth>
+                <button type="submit" className="signupButton">
                     SIGNUP
-                </Button>
-            </Box>
-        </Container>
+                </button>
+            </form>
+        </div>
     );
 };
 
