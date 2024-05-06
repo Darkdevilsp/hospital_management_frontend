@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import App1 from './App1'; // Importing App1 component
 import Home from './Pages/Home/Home/Home.jsx';
 import PatientLogin from './components/Patients/patientLogin.jsx';
 import DoctorLogin from './components/Doctors/doctorLogin.jsx';
@@ -11,7 +10,6 @@ import ManagementSignup from "./components/Management/managementSignup.jsx";
 import DoctorSignup from "./components/Doctors/doctorSignup.jsx";
 import PatientDashboard from "./components/Patients/patientDashboard.jsx";
 import DoctorDashboard from "./components/Doctors/doctorDashboard.jsx";
-//import ManagementDashboard from "./components/Management/managementDashboard.jsx";
 import AppointmentBooking from "./components/Patients/appointmentBooking.jsx";
 import Doctors from "./components/Management/doctors.jsx";
 import Staff from "./components/Management/Staff.jsx";
@@ -20,6 +18,7 @@ import Hdp from "./components/Patients/hdp.jsx";
 
 const App = () => {
     const [user, setUser] = useState(sessionStorage.getItem('user') || "None");
+    const [usingname, setUsingname] = useState(sessionStorage.getItem('email') || "None");
 
     useEffect(() => {
         sessionStorage.setItem('user', user);
@@ -28,6 +27,8 @@ const App = () => {
     function handleLogout() {
         setUser("None");
         sessionStorage.removeItem('user');
+        setUsingname("None")
+        sessionStorage.removeItem('usingname');
     }
 
     return (
@@ -42,9 +43,9 @@ const App = () => {
                         </div>
                     ) : user === "management" || user === "Admin" ? (
                         <div>
-                            <Link to="/m/:username/patients"><button>PATIENTS</button></Link>
-                            <Link to="/m/:username/doctors"><button>DOCTORS</button></Link>
-                            <Link to="/m/:username/staff"><button>STAFF</button></Link>
+                            <Link to="/m-patients"><button>PATIENTS</button></Link>
+                            <Link to="/m-doctors"><button>DOCTORS</button></Link>
+                            <Link to="/m-staff"><button>STAFF</button></Link>
                             <Link to="/"><button onClick={handleLogout}>LOGOUT</button></Link>
                         </div>
                     ) : (
@@ -57,20 +58,20 @@ const App = () => {
                 <div>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/patientLogin" element={<PatientLogin user={user} setuser={setUser} />} />
-                    <Route path="/doctorLogin" element={<DoctorLogin user={user} setuser={setUser} />} />
-                    <Route path="/managementLogin" element={<ManagementLogin user={user} setuser={setUser} />} />
-                    <Route path="/patientSignup" element={<PatientSignup user={user} setuser={setUser} />} />
-                    <Route path="/managementSignup" element={<ManagementSignup user={user} setuser={setUser} />} />
-                    <Route path="/m/:username/doctorSignup" element={<DoctorSignup user={user} setuser={setUser} />} />
-                    <Route path="/p/:username/Dashboard" element={<PatientDashboard user={user} setuser={setUser} />} />
-                    <Route path="/d/:username/Dashboard" element={<DoctorDashboard user={user} setuser={setUser} />} />
-                    <Route path="/p/:username/appointment" element={<AppointmentBooking />} />
-                    <Route path="/m/:username/doctors" element={<Doctors />} />
-                    <Route path="/m/:username/staff" element={<Staff />} />
+                    <Route path="/patientLogin" element={<PatientLogin user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/doctorLogin" element={<DoctorLogin user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/managementLogin" element={<ManagementLogin user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/patientSignup" element={<PatientSignup user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
+                    <Route path="/managementSignup" element={<ManagementSignup user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/m-doctorSignup" element={<DoctorSignup user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/p-Dashboard" element={<PatientDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/d-Dashboard" element={<DoctorDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/p-appointment" element={<AppointmentBooking user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/m-doctors" element={<Doctors user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/m-staff" element={<Staff user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
                     {/* <Route path="/m/:username/Dashboard" element={<App1 />} /> */}
-                    <Route path="/m/:username/Dashboard" element={<ManagementDashboard />} />
-                    <Route path={"/p/:username/hdp"} element={<Hdp />}></Route>
+                    <Route path="/m-Dashboard" element={<ManagementDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path={"/p-hdp"} element={<Hdp user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>}></Route>
                 </Routes>
                 </div>
 

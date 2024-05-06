@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
-function AppointmentBooking() {
+function AppointmentBooking(props) {
     const [doctors, setDoctors] = useState([]);
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedDoctor, setSelectedDoctor] = useState("");
     const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
     const [timeSlots, setTimeSlots] = useState([]);
-    const {username}=useParams()
     const navigate=useNavigate()
+    const { user,setuser, usingname,setUsingname } = props;
 
     useEffect(() => {
         const fetchDoctors = async () => {
@@ -59,7 +59,7 @@ function AppointmentBooking() {
         // Send selected data to the backend
         try {
             const response = await axios.post("http://localhost:4000/bookappointment", {
-                patient:username,
+                patient:usingname,
                 date: selectedDate,
                 doctor: selectedDoctor,
                 timeSlot: selectedTimeSlot
@@ -68,7 +68,7 @@ function AppointmentBooking() {
             if(response.data==="Added successfully")
             {
                 alert("Added successfully")
-                navigate(`/p/${username}/Dashboard`)
+                navigate(`/p-Dashboard`)
             }
             else{
                 alert("Failed to book")

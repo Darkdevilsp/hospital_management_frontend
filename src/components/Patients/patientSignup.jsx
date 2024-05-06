@@ -18,7 +18,6 @@ function PatientSignup(props) {
         try {
             const response = await axios.post("http://localhost:4000/patientSignup", {
                 name: name,
-                username: username,
                 password: password,
                 email: email,
                 phoneNo: phoneNo,
@@ -86,30 +85,26 @@ function PatientSignup(props) {
                         <form className={"signup"}>
                             <label>
                                 Name:
-                                <input type={"text"} value={name} placeholder={"Enter your name"} onChange={(e) => handleName(e.target.value)} />
+                                <input type={"text"} value={name} placeholder={"Enter your name"}
+                                       onChange={(e) => handleName(e.target.value)}/>
                             </label>
                             <label>
-                                Username:<br />
-                                <input type="text" placeholder={"Enter username"} value={username} onChange={(e) => handleUsername(e.target.value)} />
+                                Email:<br/>
+                                <input type="email" placeholder={"Enter email"} value={email}
+                                       onChange={(e) => handleEmail(e.target.value)}/>
                             </label>
                             <label>
-                                Password:<br />
-                                <input type="password" placeholder={"Enter password"} value={password} onChange={(e) => handlePassword(e.target.value)} />
+                                Phone Number:<br/>
+                                <input type="text" placeholder={"Enter phone number"} value={phoneNo}
+                                       onChange={(e) => handlePhoneNo(e.target.value)}/>
                             </label>
                             <label>
-                                Email:<br />
-                                <input type="email" placeholder={"Enter email"} value={email} onChange={(e) => handleEmail(e.target.value)} />
+                                Address:<br/>
+                                <input type="text" placeholder={"Enter address"} value={address}
+                                       onChange={(e) => handleAddress(e.target.value)}/>
                             </label>
                             <label>
-                                Phone Number:<br />
-                                <input type="text" placeholder={"Enter phone number"} value={phoneNo} onChange={(e) => handlePhoneNo(e.target.value)} />
-                            </label>
-                            <label>
-                                Address:<br />
-                                <input type="text" placeholder={"Enter address"} value={address} onChange={(e) => handleAddress(e.target.value)} />
-                            </label>
-                            <label>
-                                Blood Group:<br />
+                                Blood Group:<br/>
                                 <select value={bloodGroup} onChange={(e) => handleBloodGroup(e.target.value)}>
                                     <option value="">Select blood group</option>
                                     <option value="A+">A+</option>
@@ -122,11 +117,16 @@ function PatientSignup(props) {
                                     <option value="O-">O-</option>
                                 </select>
                             </label>
-                            <br />
+                            <label>
+                                Password:<br/>
+                                <input type="password" placeholder={"Enter password"} value={password}
+                                       onChange={(e) => handlePassword(e.target.value)}/>
+                            </label>
+                            <br/>
                             <button type="button" onClick={handleSignup}>
                                 SIGNUP
                             </button>
-                            <br />
+                            <br/>
                             Already have an account? <Link to={"/patientLogin"}>LOGIN</Link>
                         </form>
                     </div>

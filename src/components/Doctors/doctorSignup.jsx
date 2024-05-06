@@ -36,7 +36,7 @@ const DoctorSignup = () => {
             console.log(ans);
             if (ans === "Added successfully") {
                 alert(ans)
-                navigate("/m/:username/doctors");
+                navigate("/m-doctors");
             }
         } catch (error) {
             console.error("Error during signup:", error);

@@ -1,11 +1,10 @@
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./patient.css"
 
 
 function PatientDashboard(props) {
-    const { user, setuser } = props;
-    const { username } = useParams();
+    const { user,setuser, usingname,setUsingname } = props;
     const [appointments, setAppointments] = useState([]);
     const navigate =useNavigate();
     useEffect(() => {
@@ -18,12 +17,11 @@ function PatientDashboard(props) {
                 console.error("Error fetching appointments:", error);
             }
         };
-
         fetchAppointments();
     }, []);
 
     function handleHdp() {
-        navigate(`/p/${username}/hdp`)
+        navigate(`/p-hdp`)
     }
 
     return (
@@ -33,14 +31,14 @@ function PatientDashboard(props) {
                 :
                 user === "patient" ?
                     <div>
-                        <h1>Welcome {username}</h1>
+                        <h1>Welcome {usingname}</h1>
                         <div className="personal-details">
                             <h3>Personal Details</h3>
                             <p>Details</p>
 
                         </div>
                         <div className="bookings">
-                            <Link to={`/p/${username}/appointment`}><button>Book Appointment</button></Link>
+                            <Link to={`/p-appointment`}><button>Book Appointment</button></Link>
                             <button onClick={handleHdp}>Heart disease prediction</button>
                             <button>Past Records</button>
                         </div>
@@ -48,7 +46,7 @@ function PatientDashboard(props) {
                             <h4>Appointments</h4>
                             <ul>
                                 {appointments.map((appointment) => {
-                                    if (appointment.patientName === username) {
+                                    if (appointment.patientName === usingname) {
                                         return (
                                             <li key={appointment._id}>
                                                 Date: {appointment.date} Time: {appointment.time} Doctor: {appointment.doctor}

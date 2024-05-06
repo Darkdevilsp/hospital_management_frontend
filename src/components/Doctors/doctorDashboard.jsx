@@ -2,8 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function DoctorDashboard() {
-    const { username } = useParams();
+function DoctorDashboard(props) {
+    const {user,setUser,usingname,setUsingname}=props
     const [appointments, setAppointments] = useState([]);
     const [fetchAppointmentsAgain, setFetchAppointmentsAgain] = useState(false); // State to trigger fetching appointments again
 
@@ -39,12 +39,12 @@ function DoctorDashboard() {
 
     return (
         <div>
-            <h1>Welcome {username}</h1>
+            <h1>Welcome {usingname}</h1>
             <div>
                 <h4>Today's Appointments</h4>
                 <ul>
                     {appointments.map((appointment) => {
-                        if (appointment.doctor === username && appointment.date === todayDate) {
+                        if (appointment.doctor === usingname && appointment.date === todayDate) {
                             return (
                                 <li key={appointment._id}>
                                     Time: {appointment.time} Patient: {appointment.patientName}

@@ -28,7 +28,7 @@ const ManagementLogin = (props) => {
                     setuser("management");
                 }
 
-                navigate(`/m/${username}/Dashboard`);
+                navigate(`/m-Dashboard`);
             } else {
                 alert("User doesn't exist or incorrect credentials");
             }
