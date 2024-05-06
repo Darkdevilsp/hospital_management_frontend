@@ -1,15 +1,15 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Box, Container, TextField, Button, Typography } from '@mui/material'; // Import Material-UI components
+import doctorImage from "../../utils/loginpage.png";
 
-function PatientLogin (props) {
-    // eslint-disable-next-line react/prop-types
-    const {user,setuser,usingname,setUsingname}=props
 
+function PatientLogin(props) {
+    const { user, setuser, setUsingname } = props;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -23,9 +23,9 @@ function PatientLogin (props) {
             console.log(response.data);
 
             if (response.data === 'you are ready to login') {
-                setuser("patient")
-                setUsingname(email)
-                console.log(user)
+                setuser("patient");
+                setUsingname(email);
+                console.log(user);
                 navigate(`/p-Dashboard`);
 
             } else {
@@ -38,38 +38,77 @@ function PatientLogin (props) {
     };
 
     return (
-        <div className={"loginBox"}>
-            {user==="patient"?
+        <div className="loginBox" style={{
+            backgroundImage: `url(${doctorImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'relative',
+            minHeight: '92vh',
+            fontFamily: 'Arial Narrow, sans-serif'
+        }}>
+            {user === "patient" ? (
                 <div>
-                    <h1>you have already logged in </h1>
+                    <Typography variant="h4">You have already logged in</Typography>
                 </div>
-                : user==="None"?
-                    <div>
-                        <h2>Patient Login</h2>
-                        <div className={"form-container"}>
-
-                            <form onSubmit={handleLogin}>
-                                <label>
-                                    Email
-                                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                </label>
-                                <br />
-                                <label>
-                                    Password:
-                                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                                </label>
-                                <br />
-                                <button type="submit">Login</button>
-                            </form>
-                            <p>New user? <Link to="/patientSignup">Signup Here</Link></p>
-                        </div>
-                    </div>
-                    :
-                    <div>
-                        <h1>you dont have access to this page</h1>
-                    </div>
-            }
-
+            ) : user === "None" ? (
+                <Container maxWidth="sm">
+                    <Box
+                        sx={{
+                            width: '80%',
+                            background: 'white',
+                            padding: '20px',
+                            marginTop: '20px',
+                            position: 'relative',
+                            left: '400px',
+                            textAlign: 'center',
+                            color: 'black'
+                        }}
+                    >
+                        <Typography variant="h4" gutterBottom style={{fontFamily: '"Arial Narrow", Arial, sans-serif'}}>
+                            PATIENT LOGIN
+                        </Typography>
+                        <form onSubmit={handleLogin}>
+                            <TextField
+                                name="email"
+                                label="Email"
+                                variant="outlined"
+                                fullWidth
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                sx={{ marginBottom: '20px' }}
+                            />
+                            <TextField
+                                name="password"
+                                label="Password"
+                                type="password"
+                                variant="outlined"
+                                fullWidth
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                sx={{ marginBottom: '20px' }}
+                            />
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="secondary"
+                                fullWidth
+                            >
+                                Login
+                            </Button>
+                        </form>
+                        <Typography variant="body1" sx={{ marginTop: '20px' }}>
+                            New user? <Link to="/patientSignup">Signup Here</Link>
+                        </Typography>
+                    </Box>
+                </Container>
+            ) : (
+                <div>
+                    <Typography variant="h4">You don't have access to this page</Typography>
+                </div>
+            )}
         </div>
     );
 }
