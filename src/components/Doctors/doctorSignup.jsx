@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import doctorImage from "../../utils/loginpage.png";
 import "./doctorSignup.css";
-import {useNavigate} from "react-router-dom"; // Import your CSS file
+import { useNavigate } from "react-router-dom"; // Import your CSS file
+import { Box, Container, TextField, Button, Typography } from '@mui/material'; // Import Material-UI components
+
 
 const genders = ["Male", "Female"];
 
@@ -49,7 +51,9 @@ const DoctorSignup = () => {
     };
 
     return (
-        <div className="signupContainer" style={{ backgroundImage: `url(${doctorImage})` }}>
+        <div className="signupContainer" style={{
+            backgroundImage: `url(${doctorImage})`,
+        }}>
             <form className="signupForm" onSubmit={handleSubmit}>
                 <h2 className="signupHeading">ADD DOCTOR</h2>
                 <input
@@ -74,8 +78,17 @@ const DoctorSignup = () => {
                     name="gender"
                     value={gender}
                     onChange={(e) => setGender(e.target.value)}
-                    className="signupInput"
                     required
+                    className="signupInput"
+                    style={{
+                        paddingTop: '10px',
+                        marginTop: '0px',
+                        marginBottom: '15px',
+                        marginLeft: '0px',
+                        fontSize: '15px',
+                        opacity: '0.6'
+
+                    }}
                 >
                     {genders.map((gender) => (
                         <option key={gender} value={gender}>
@@ -83,6 +96,7 @@ const DoctorSignup = () => {
                         </option>
                     ))}
                 </select>
+
                 <input
                     type="tel"
                     name="phoneNo"
@@ -128,9 +142,14 @@ const DoctorSignup = () => {
                     className="signupInput"
                     required
                 />
-                <button type="submit" className="signupButton">
-                    SIGNUP
-                </button>
+                <Button
+                    type="submit"
+                    variant="contained"
+                    color="secondary"
+                    fullWidth
+                >
+                    SIGN UP
+                </Button>
             </form>
         </div>
     );
