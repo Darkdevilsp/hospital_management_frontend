@@ -33,47 +33,61 @@ const App = () => {
 
     return (
         <div className={"completebody"}>
-                <div className="topnav">
-                    <Link to="/"><button>HOME</button></Link>
-                    {user === "None" ? (
+            <div className="topnav">
+                <Link to="/"><button>HOME</button></Link>
+                {user === "None" ? (
+                    <div>
+                        <Link to="/patientLogin"><button>PATIENT LOGIN</button></Link>
+                        <Link to="/doctorLogin"><button>DOCTOR LOGIN</button></Link>
+                        <Link to="/managementLogin"><button>MANAGEMENT LOGIN</button></Link>
+                    </div>
+                ) : user === "management" || user === "Admin" ? (
+                    <div>
+                        <Link to="/m-Dashboard"><button>Dasboard</button> </Link>
+                        <Link to="/m-patients"><button>PATIENTS</button></Link>
+                        <Link to="/m-doctors"><button>DOCTORS</button></Link>
+                        <Link to="/m-staff"><button>STAFF</button></Link>
+                        <Link to="/"><button onClick={handleLogout}>LOGOUT</button></Link>
+                    </div>
+                ) : user === "patient" ?
+                    (
                         <div>
-                            <Link to="/patientLogin"><button>PATIENT LOGIN</button></Link>
-                            <Link to="/doctorLogin"><button>DOCTOR LOGIN</button></Link>
-                            <Link to="/managementLogin"><button>MANAGEMENT LOGIN</button></Link>
-                        </div>
-                    ) : user === "management" || user === "Admin" ? (
-                        <div>
-                            <Link to="/m-patients"><button>PATIENTS</button></Link>
-                            <Link to="/m-doctors"><button>DOCTORS</button></Link>
-                            <Link to="/m-staff"><button>STAFF</button></Link>
+                            <Link to="/p-Dashboard"><button>Dasboard</button> </Link>
                             <Link to="/"><button onClick={handleLogout}>LOGOUT</button></Link>
                         </div>
-                    ) : (
-                        <Link to="/"><button onClick={handleLogout}>LOGOUT</button></Link>
-                    )}
 
-                </div>
-                
+                    ):
+                    (
+                        <div>
+                            <Link to="/d-Dashboard"><button>Dasboard</button> </Link>
+                            <Link to="/"><button onClick={handleLogout}>LOGOUT</button></Link>
+                        </div>
 
-                <div>
+                    )
+                    }
+
+            </div>
+
+
+            <div>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/patientLogin" element={<PatientLogin user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
-                    <Route path="/doctorLogin" element={<DoctorLogin user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
-                    <Route path="/managementLogin" element={<ManagementLogin user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/patientLogin" element={<PatientLogin user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
+                    <Route path="/doctorLogin" element={<DoctorLogin user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
+                    <Route path="/managementLogin" element={<ManagementLogin user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
                     <Route path="/patientSignup" element={<PatientSignup user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
-                    <Route path="/managementSignup" element={<ManagementSignup user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
-                    <Route path="/m-doctorSignup" element={<DoctorSignup user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
-                    <Route path="/p-Dashboard" element={<PatientDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
-                    <Route path="/d-Dashboard" element={<DoctorDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
-                    <Route path="/p-appointment" element={<AppointmentBooking user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
-                    <Route path="/m-doctors" element={<Doctors user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
-                    <Route path="/m-staff" element={<Staff user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
+                    <Route path="/managementSignup" element={<ManagementSignup user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
+                    <Route path="/m-doctorSignup" element={<DoctorSignup user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
+                    <Route path="/p-Dashboard" element={<PatientDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
+                    <Route path="/d-Dashboard" element={<DoctorDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
+                    <Route path="/p-appointment" element={<AppointmentBooking user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
+                    <Route path="/m-doctors" element={<Doctors user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
+                    <Route path="/m-staff" element={<Staff user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
                     {/* <Route path="/m/:username/Dashboard" element={<App1 />} /> */}
-                    <Route path="/m-Dashboard" element={<ManagementDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>} />
-                    <Route path={"/p-hdp"} element={<Hdp user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname}/>}></Route>
+                    <Route path="/m-Dashboard" element={<ManagementDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
+                    <Route path={"/p-hdp"} element={<Hdp user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />}></Route>
                 </Routes>
-                </div>
+            </div>
 
         </div>
     );
