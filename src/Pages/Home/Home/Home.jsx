@@ -30,7 +30,6 @@ const Home = () => {
           </Box>
         </Grid>
       </Grid>
-      <TodaysDoctors></TodaysDoctors>
     </div>
   );
 };
