@@ -1,6 +1,13 @@
+/* hdp.css */
+
 .form-container {
     max-width: 500px;
     margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px; /* Add border radius for a rounded appearance */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    background-size: cover; /* Ensure the image covers the container */
+    background-position: center; /* Center the background image */
 }
 
 .form-container h1 {
@@ -17,14 +24,15 @@
     margin-bottom: 10px;
 }
 
-.form-container input[type="text"] {
+.form-container input[type="text"],
+.form-container select {
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.form-container button {
+.form-container .my-cta-button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -33,6 +41,6 @@
     cursor: pointer;
 }
 
-.form-container button:hover {
+.form-container .my-cta-button:hover {
     background-color: #0056b3;
 }
