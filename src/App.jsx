@@ -43,7 +43,7 @@ const App = () => {
                     </div>
                 ) : user === "management" || user === "Admin" ? (
                     <div>
-                        <Link to="/m-Dashboard"><button>Dasboard</button> </Link>
+                        <Link to="/m-Dashboard"><button>DASHBOARD</button> </Link>
                         <Link to="/m-patients"><button>PATIENTS</button></Link>
                         <Link to="/m-doctors"><button>DOCTORS</button></Link>
                         <Link to="/m-staff"><button>STAFF</button></Link>
@@ -52,14 +52,14 @@ const App = () => {
                 ) : user === "patient" ?
                     (
                         <div>
-                            <Link to="/p-Dashboard"><button>Dasboard</button> </Link>
+                            <Link to="/p-Dashboard"><button>DASHBOARD</button> </Link>
                             <Link to="/"><button onClick={handleLogout}>LOGOUT</button></Link>
                         </div>
 
                     ):
                     (
                         <div>
-                            <Link to="/d-Dashboard"><button>Dasboard</button> </Link>
+                            <Link to="/d-Dashboard"><button>DASHBOARD</button> </Link>
                             <Link to="/"><button onClick={handleLogout}>LOGOUT</button></Link>
                         </div>
 
