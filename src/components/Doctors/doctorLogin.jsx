@@ -5,7 +5,7 @@ import { Box, Container, TextField, Button, Typography } from '@mui/material'; /
 import doctorImage from "../../utils/loginpage.png"; // Import your background image
 
 const DoctorLogin = (props) => {
-    const { user, setuser } = props;
+    const { user, setuser ,usingname,setUsingname} = props;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -27,6 +27,7 @@ const DoctorLogin = (props) => {
 
             if (response.data === 'you are ready to login') {
                 setuser("doctor");
+                setUsingname(email)
                 navigate(`/d-Dashboard`);
             } else {
                 alert("User doesn't exist or incorrect credentials");

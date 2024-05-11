@@ -18,7 +18,11 @@ function DoctorDashboard(props) {
         };
 
         fetchAppointments();
-    }, [fetchAppointmentsAgain]); // Fetch appointments again whenever fetchAppointmentsAgain state changes
+        console.log(appointments)
+    }, [setFetchAppointmentsAgain]);
+
+
+
 
     const todayDate = new Date().toISOString().split("T")[0];
 
@@ -27,7 +31,6 @@ function DoctorDashboard(props) {
             const response = await axios.delete("http://localhost:4000/deleteAppointment", { data: { id } });
             if (response.data === "Treated") {
                 alert("Treated");
-                // Set fetchAppointmentsAgain state to true to trigger fetching appointments again
                 setFetchAppointmentsAgain(prevState => !prevState);
             } else {
                 alert("Failed from server");
@@ -44,10 +47,10 @@ function DoctorDashboard(props) {
                 <h4>Today's Appointments</h4>
                 <ul>
                     {appointments.map((appointment) => {
-                        if (appointment.doctor === usingname && appointment.date === todayDate) {
+                        if (appointment.doctor === usingname) {
                             return (
                                 <li key={appointment._id}>
-                                    Time: {appointment.time} Patient: {appointment.patientName}
+                                    Time: {appointment.time} Patient: {appointment.patientEmail}
                                     <button onClick={() => handleTreat(appointment._id)}>Treat</button>
                                 </li>
                             );

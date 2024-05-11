@@ -94,7 +94,7 @@ function AppointmentBooking(props) {
                 <select onChange={handleDoctorChange} required>
                     <option value="">Select a doctor</option>
                     {doctors.map((doctor) => (
-                        <option key={doctor._id} value={doctor.username}>{doctor.name}</option>
+                        <option key={doctor._id} value={doctor.email}>{doctor.name}</option>
                     ))}
                 </select>
                 <label htmlFor="timeSlots">Select Time Slot</label>

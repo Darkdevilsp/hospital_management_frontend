@@ -18,7 +18,7 @@ import Hdp from "./components/Patients/hdp.jsx";
 
 const App = () => {
     const [user, setUser] = useState(sessionStorage.getItem('user') || "None");
-    const [usingname, setUsingname] = useState(sessionStorage.getItem('email') || "None");
+    const [usingname, setUsingname] = useState("");
 
     useEffect(() => {
         sessionStorage.setItem('user', user);
@@ -27,8 +27,8 @@ const App = () => {
     function handleLogout() {
         setUser("None");
         sessionStorage.removeItem('user');
-        setUsingname("None")
-        sessionStorage.removeItem('usingname');
+        sessionStorage.removeItem('usingname')
+        setUsingname("");
     }
 
     return (
@@ -88,7 +88,10 @@ const App = () => {
                     <Route path={"/p-hdp"} element={<Hdp user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />}></Route>
                 </Routes>
             </div>
+            <footer>
+                <p>copyright @ MIRIYALA CHARAN SAI and ROUTU SRINIVAS PRASAD</p>
 
+            </footer>
         </div>
     );
 };
