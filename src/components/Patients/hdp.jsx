@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import heart from "../../utils/heart.png"
 import { Box, Container, TextField, Button, Typography, Select, MenuItem } from '@mui/material'; // Import Material-UI components
-
+import "./hdp.css"
 
 const Hdp = () => {
     const [formData, setFormData] = useState({
@@ -61,21 +61,24 @@ const Hdp = () => {
         <div style={{
             backgroundImage: `url(${heart})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundPosition: '"50% + 30px"center',
+            backgroundPositionY: '40px',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            width: '1600px'
         }}>
             <Box className="form-container" style={{
-                width: '400px',
+                width: '40%',
                 padding: '20px',
                 borderRadius: '10px',
                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                 color: 'black',
                 position: 'relative',
-                left: '25%',
+                left: '28%',
                 textAlign: 'left',
+                overflow: "auto",
+                overflowX: 'hidden',
+                height: '80vh'
             }}>
                 <h1 style={{
                     color: "purple",
@@ -112,7 +115,7 @@ const Hdp = () => {
                             <option value="3">Asymptomatic</option>
                         </select>
                     </div>
-                    <div style={{marginTop: '20%'}}>
+                    <div style={{marginTop: '15%'}}>
                         <label htmlFor="trestbps">Resting Blood Pressure</label>
                         <input type="text" id="trestbps" name="trestbps" value={formData.trestbps} onChange={handleChange}
                             placeholder="A number in range [94-200] mmHg" /><br />

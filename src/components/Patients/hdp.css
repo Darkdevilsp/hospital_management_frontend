@@ -1,46 +1,33 @@
-/* hdp.css */
-
-.form-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 10px; /* Add border radius for a rounded appearance */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
-    background-size: cover; /* Ensure the image covers the container */
-    background-position: center; /* Center the background image */
-}
-
-.form-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.form-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-container label {
-    margin-bottom: 10px;
-}
-
-.form-container input[type="text"],
-.form-container select {
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.form-container .my-cta-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.form-container .my-cta-button:hover {
-    background-color: #0056b3;
-}
+/* Webkit scrollbar customization */
+/* Target the scrollbar track */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+  }
+  
+  /* Style the scrollbar track */
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Background color of the track */
+    border-radius: 10px; /* Radius of the track */
+  }
+  
+  /* Style the scrollbar thumb (the draggable handle) */
+  ::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the thumb */
+    border-radius: 10px; /* Radius of the thumb */
+  }
+  
+  /* Style the scrollbar thumb on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Color of the thumb on hover */
+  }
+  
+  /* Style the scrollbar corner (between the track and thumb) */
+  ::-webkit-scrollbar-corner {
+    background-color: transparent; /* Background color of the scrollbar corner */
+  }
+  
+  /* Style the scrollbar buttons (arrows) */
+  ::-webkit-scrollbar-button {
+    display: none; /* Hide scrollbar buttons */
+  }
+  

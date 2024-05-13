@@ -10,23 +10,23 @@ import UserInfo from '../UserInfo/UserInfo';
 
 const Home = () => {
   return (
-    <div>
+    <div style={{ margin: '30px ', marginBottom: '82px' }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
           <Banner></Banner>
           <DetailsChart></DetailsChart>
-          <UserInfo></UserInfo>
         </Grid>
         <Grid item xs={12} md={4}>
           <Feedback></Feedback>
           <Box style={{
             backgroundColor: '#fff',
-            marginTop: '1rem',
+            marginTop: '8%',
             borderRadius: '0.3rem',
             boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.05)',
           }}>
-            <Typography sx={{ fontSize: '1.2rem', textAlign: 'left', paddingLeft: '20px', paddingTop: '20px', fontFamily:'monospace' }}><strong>Percentage of patients</strong></Typography>
-            <RadialChart></RadialChart>
+            
+              <Typography sx={{ fontSize: '1.2rem', textAlign: 'left', paddingLeft: '20px', paddingTop: '12px', fontFamily: 'monospace', color: 'black' }}><strong>Percentage of patients</strong></Typography>
+              <RadialChart ></RadialChart>
           </Box>
         </Grid>
       </Grid>

@@ -58,12 +58,14 @@ function PatientSignup(props) {
             justifyContent: 'center',
             alignItems: 'center',
             position: 'relative',
-            minHeight: '92vh',
-            fontFamily: 'Arial Narrow, sans-serif'}}>
+            minHeight: '100vh',
+            fontFamily: 'Arial Narrow, sans-serif'
+        }}>
             {user === "None" ?
                 <div className="signupBox">
-                    <Typography variant="h4">PATIENT SIGNUP</Typography>
+
                     <Container maxWidth="sm">
+
                         <Box
                             sx={{
                                 width: '80%',
@@ -77,6 +79,7 @@ function PatientSignup(props) {
                             }}
                         >
                             <form>
+                                <Typography color="black" variant="h4">PATIENT SIGNUP</Typography>
                                 <TextField
                                     label="Name"
                                     type="text"

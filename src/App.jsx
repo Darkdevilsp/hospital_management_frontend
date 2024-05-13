@@ -56,7 +56,7 @@ const App = () => {
                             <Link to="/"><button onClick={handleLogout}>LOGOUT</button></Link>
                         </div>
 
-                    ):
+                    ) :
                     (
                         <div>
                             <Link to="/d-Dashboard"><button>DASHBOARD</button> </Link>
@@ -64,7 +64,7 @@ const App = () => {
                         </div>
 
                     )
-                    }
+                }
 
             </div>
 
@@ -87,10 +87,12 @@ const App = () => {
                     <Route path="/m-Dashboard" element={<ManagementDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
                     <Route path={"/p-hdp"} element={<Hdp user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />}></Route>
                 </Routes>
+
             </div>
-            <div style={{padding: '0', margin: '0', backgroundColor: 'whitesmoke'}}>
-                <p style={{textAlign:'center', backgroundColor: 'whitesmoke', color: 'black'}}>&#169; made with &#10084; by mc&sp</p>
-            </div>
+            <footer style={{backgroundColor: 'whitesmoke', position: 'fixed', bottom: '0', width: "100%" }}>
+                <p style={{ textAlign: 'center', color: 'black' }}>&#169; made with &#10084; by mc&sp</p>
+            </footer>
+
         </div>
     );
 };

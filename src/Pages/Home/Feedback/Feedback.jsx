@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Button, Snackbar, TextField, IconButton } from '@mui/material';
+import { Button, Snackbar, TextField, IconButton, Typography, Box } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import axios from 'axios';
 
@@ -31,24 +31,29 @@ const Feedback = () => {
 
   return (
     <div>
-      <h3>Alzheimer's Prediction</h3>
-      <form onSubmit={predictAlzheimer} ref={form}>
-        <TextField
-          type="file"
-          id="image-upload"
-          name="file" // Use 'file' as the name attribute for file input
-          inputProps={{ accept: '.jpg, .jpeg, .png' }}
-        />
-        <Button type="submit" variant="contained" color="primary">
-          Predict
-        </Button>
-      </form>
-      {predictionResult && (
-        <div>
-          <h4>Prediction Result:</h4>
-          <p>{predictionResult}</p>
-        </div>
-      )}
+      <Box sx={{background: 'white', textAlign: 'center', padding: '40px', borderRadius: '10px'}}>
+        <Typography variant="h6" gutterBottom color={'black'} sx = {{padding: '14px'}}>
+          ALZHIEMER'S DISEASE PREDICTION
+        </Typography>
+        <form onSubmit={predictAlzheimer} ref={form}>
+          <TextField
+            type="file"
+            id="image-upload"
+            sx={{color: 'black'}}
+            name="file" // Use 'file' as the name attribute for file input
+            inputProps={{ accept: '.jpg, .jpeg, .png' }}
+          />
+          <Button type="submit" variant="contained" color="secondary" sx ={{marginTop: '10px' , width: '85%'}}>
+            Predict
+          </Button>
+        </form>
+        {predictionResult && (
+          <div>
+            <h4>Prediction Result:</h4>
+            <p>{predictionResult}</p>
+          </div>
+        )}
+      </Box>
     </div>
   );
 };

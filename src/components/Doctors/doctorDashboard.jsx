@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
 
 function DoctorDashboard(props) {
@@ -44,20 +45,60 @@ function DoctorDashboard(props) {
         <div className="doctor-dashboard">
             {user === 'None' ? (
                 <p>You don't have access to this page. Please go back to the home page and log in.</p>
-            ) : user === 'doctor' ? (
-                <div>
-                    <h1>Welcome {usingname}</h1>
+            ) : user === 'doctor' ? (<div>
+                <h1>Welcome {usingname}</h1>
+
+                <div style={{ display: 'flex', gap: '20px', justifyContent: 'space-around' }}>
+
                     <div className="doctor-details">
-                        <h3>Doctor Details</h3>
-                        <div>
-                            <p><strong>Name:</strong> {doctorDetails.name}</p>
-                            <p><strong>Age:</strong> {doctorDetails.age}</p>
-                            <p><strong>Gender:</strong> {doctorDetails.gender}</p>
-                            <p><strong>Email:</strong> {doctorDetails.email}</p>
-                            <p><strong>Designation:</strong> {doctorDetails.designation}</p>
-                            <p><strong>Phone No:</strong> {doctorDetails.phoneNo}</p>
-                            <p><strong>Address:</strong> {doctorDetails.address}</p>
-                            <p><strong>Password:</strong> {doctorDetails.password}</p>
+                        <Typography variant="h5" gutterBottom>
+                            DOCTOR DETAILS
+                        </Typography>
+                        <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                            <TableContainer component={Paper} fullwidth >
+                                <Table aria-label="doctor details table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell><strong>Field</strong></TableCell>
+                                            <TableCell><strong>Value</strong></TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableCell><strong>Name</strong></TableCell>
+                                            <TableCell>{doctorDetails.name}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell><strong>Age</strong></TableCell>
+                                            <TableCell>{doctorDetails.age}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell><strong>Gender</strong></TableCell>
+                                            <TableCell>{doctorDetails.gender}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell><strong>Email</strong></TableCell>
+                                            <TableCell>{doctorDetails.email}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell><strong>Designation</strong></TableCell>
+                                            <TableCell>{doctorDetails.designation}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell><strong>Phone No</strong></TableCell>
+                                            <TableCell>{doctorDetails.phoneNo}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell><strong>Address</strong></TableCell>
+                                            <TableCell>{doctorDetails.address}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell><strong>Password</strong></TableCell>
+                                            <TableCell>{doctorDetails.password}</TableCell>
+                                        </TableRow>
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
                         </div>
                     </div>
                     <div>
@@ -76,9 +117,8 @@ function DoctorDashboard(props) {
                             })}
                         </ul>
                     </div>
-                    {/* Other components and buttons */}
                 </div>
-            ) : (
+            </div>) : (
                 <p>You don't have access to this page.</p>
             )}
         </div>

@@ -72,3 +72,8 @@ button:hover, .btn:hover {
     color: #6C5B7B;
 }
 
+.completebody{
+    display: flex;
+    flex-direction: column;
+
+}
