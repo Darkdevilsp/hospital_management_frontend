@@ -53,9 +53,15 @@ const DoctorSignup = () => {
     return (
         <div className="signupContainer" style={{
             backgroundImage: `url(${doctorImage})`,
+            position: 'relative'
         }}>
-            <form className="signupForm" onSubmit={handleSubmit}>
-                <h2 className="signupHeading">ADD DOCTOR</h2>
+            <form className="signupForm" onSubmit={handleSubmit} style={{
+                position: 'relative',
+                left: '5%'
+            }}>
+            <Typography variant="h5" gutterBottom color={'black'}>
+          ADD DOCTOR
+        </Typography>
                 <input
                     type="text"
                     name="name"
@@ -145,7 +151,7 @@ const DoctorSignup = () => {
                 <Button
                     type="submit"
                     variant="contained"
-                    color="secondary"
+                    sx={{ backgroundColor: "#1572a1", color: 'white'}}
                     fullWidth
                 >
                     SIGN UP

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import "./doctor.css"; // Import CSS file for styling
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, TextField } from '@mui/material';
+import back2 from "../../utils/back2.png"
 
 function Doctors() {
     const [doctors, setDoctors] = useState([]);
@@ -31,7 +32,7 @@ function Doctors() {
         };
 
         fetchData();
-    }, [searchQuery]); // Run effect when searchQuery changes
+    }, [searchQuery,setDoctors]); // Run effect when searchQuery changes
 
     // Handler for search input change
     const handleSearchInputChange = (event) => {
@@ -39,14 +40,15 @@ function Doctors() {
     };
 
     // Function to delete a doctor
-    async function handleDeleteDoctor  (doctorId) {
+    async function handleDeleteDoctor(doctorId) {
         console.log(doctorId)
         try {
-            const response=await axios.delete(`http://localhost:4000/deletedoctors/${doctorId}`);
+            const response = await axios.delete(`http://localhost:4000/deletedoctors/${doctorId}`);
             console.log(response.data)
-            if(response.data=="Deleted")
-            {
+            if (response.data == "Deleted") {
                 setDoctors(prevDoctors => prevDoctors.filter(doctor => doctor._id !== doctorId));
+                setDoctorsCount(doctors.length);
+
             }
         } catch (error) {
             console.log("Error deleting doctor:", error);
@@ -54,35 +56,82 @@ function Doctors() {
     };
 
     return (
-        <div className="container" style={{justifyContent: 'center', position: 'relative', left: '30%', width: '600px', background: 'white', marginTop: '5%', color: 'black'}}>
-            <div className="header">
-                <h2>Total Doctors: {doctorsCount}</h2>
-            </div>
-            <div>
-                <input
+        <div style={{
+            backgroundImage: `url(${back2})`,
+            backgroundSize: 'cover',
+            minHeight: '87vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: 'black'
+        }}>
+            <Box
+                sx={{
+                    maxWidth: '600px',
+                    width: '100%',
+                    backgroundColor: 'white',
+                    padding: '20px',
+                    borderRadius: '8px',
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+                }}
+            >
+                <Typography variant="h4" textAlign={"center"} gutterBottom>
+                    Total Doctors: {doctorsCount}
+                </Typography>
+                <TextField
                     type="text"
                     placeholder="Search doctors by name"
                     value={searchQuery}
                     onChange={handleSearchInputChange}
+                    fullWidth
+                    margin="normal"
                 />
-            </div>
-            <Link to={`/m-doctorSignup`}><Button variant="contained"
-                        color="secondary" fullWidth>Add Doctor</Button></Link>
-            {username === "admin" && <button>Doctor requests</button>}
-            <hr />
-            <Typography variant="h5" gutterBottom>Doctors</Typography>
-            {searchResultFound ? (
-                <Box>
-                    {doctors.map((doctor) => (
-                        <div key={doctor._id} className="doctorCard">
-                            <li>{doctor.name}
-                            <Button color="secondary" sx={{position: 'relative', right: '0px'}} onClick={() => handleDeleteDoctor(doctor._id)}>Delete</Button></li>
-                        </div>
-                    ))}
-                </Box>
-            ) : (
-                <p>No doctors found.</p>
-            )}
+                <Link to="/m-doctorSignup">
+                    <Button variant="contained" sx={{ backgroundColor: "#1572a1", color: 'white', marginTop: '20px'}}
+                        fullWidth>
+                        Add Doctor
+                    </Button>
+                </Link>
+                {username === "admin" && (
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        fullWidth
+                        style={{ marginTop: '10px' }}
+                    >
+                        Doctor requests
+                    </Button>
+                )}
+                <hr style={{ margin: '20px 0' }} />
+                <Typography variant="h5" gutterBottom>
+                    Doctors
+                </Typography>
+                {searchResultFound ? (
+                    <Box>
+                        {doctors.map((doctor) => (
+                            <div
+                                key={doctor._id}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    marginBottom: '10px'
+                                }}
+                            >
+                                <Typography variant="body1">{doctor.name}</Typography>
+                                <Button
+                                    sx={{ backgroundColor: "#1572a1", color: 'white', marginTop: '20px'}}
+                                    onClick={() => handleDeleteDoctor(doctor._id)}
+                                >
+                                    Delete
+                                </Button>
+                            </div>
+                        ))}
+                    </Box>
+                ) : (
+                    <Typography variant="body1">No doctors found.</Typography>
+                )}
+            </Box>
         </div>
     );
 }
