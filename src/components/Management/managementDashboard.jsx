@@ -10,6 +10,7 @@ import {
     Divider,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import axios from "axios";
 
 const useStyles = makeStyles({
     root: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles({
         marginBottom: 10,
     },
 });
+
 
 function ManagementDashboard() {
     const classes = useStyles();
@@ -54,9 +56,19 @@ function ManagementDashboard() {
         console.log("Reschedule appointment with ID:", appointmentId);
     };
 
-    const handleDelete = (appointmentId) => {
-        // Implement delete functionality
-        console.log("Delete appointment with ID:", appointmentId);
+    async function handleDelete (id) {
+        try{
+            const response = await axios.delete(`http://localhost:4000/deleteAppointment/${id}`);
+            if (response.data === "Deleted") {
+                alert("Appointment deleted successfully");
+                setAppointments(prevAppointments => prevAppointments.filter(appointment => appointment._id !== id));
+            } else {
+                alert("Failed to delete appointment");
+            }
+        } catch (error) {
+            console.error("Error deleting appointment:", error);
+            alert("Failed to delete appointment");
+        }
     };
 
     return (
