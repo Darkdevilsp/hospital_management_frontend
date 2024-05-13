@@ -142,7 +142,7 @@ function PatientSignup(props) {
                                 <Button
                                     type="button"
                                     variant="contained"
-                                    color="secondary"
+                                    sx={{ backgroundColor: "#1572a1", color: 'white', marginTop: '20px', padding: '10px' }}
                                     fullWidth
                                     onClick={handleSignup}
                                 >

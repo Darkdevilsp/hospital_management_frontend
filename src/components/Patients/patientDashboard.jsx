@@ -126,91 +126,94 @@ function PatientDashboard(props) {
                             overflow: "auto",
                             position: 'relative',
                         }}>
-                                <Typography variant="h4" gutterBottom>
-                                    EDIT DETAILS
-                                </Typography>
-                                <form>
-                                    <div>
-                                        <TextField
-                                            type="text"
-                                            label='Name'
-                                            name="name"
-                                            value={patientDetails.name}
-                                            fullWidth
-                                            margin="normal"
-                                            placeholder={patientDetails.name}
-                                            onChange={handleChange}
-                                            disabled={!isEditing} />
-                                    </div>
-                                    <div>
-                                        <TextField
-                                            type="email"
-                                            label="Email"
-                                            margin="normal"
-                                            fullWidth
-                                            name="email"
-                                            value={patientDetails.email}
-                                            placeholder={patientDetails.email} disabled />
-                                    </div>
-                                    <div>
-                                        <TextField
-                                            type="text"
-                                            label="Phone No"
-                                            fullWidth
-                                            name="phoneNo"
-                                            margin="normal"
-                                            value={patientDetails.phoneNo}
-                                            placeholder={patientDetails.phoneNo}
-                                            onChange={handleChange}
-                                            disabled={!isEditing} />
-                                    </div>
-                                    <div>
-                                        <TextField type="text"
-                                            label="Address"
-                                            fullWidth
-                                            name="address"
-                                            margin="normal"
-                                            value={patientDetails.address}
-                                            placeholder={patientDetails.address}
-                                            onChange={handleChange}
-                                            disabled={!isEditing} />
-                                    </div>
-                                    <div>
-                                        <TextField type="text"
-                                            label="Blood Group"
-                                            fullWidth
-                                            name="bloodGroup"
-                                            margin="normal"
-                                            value={patientDetails.bloodGroup}
-                                            onChange={handleChange}
-                                            disabled={!isEditing} />
-                                    </div>
-                                    <div>
-                                        <TextField type="password"
-                                            label="Password"
-                                            fullWidth
-                                            name="password"
-                                            margin="normal"
-                                            value={patientDetails.password}
-                                            onChange={handleChange}
-                                            disabled={!isEditing} />
-                                    </div>
-                                </form>
-                                {!isEditing && (
-                                    <Button sx={{ margin: "10px" }} variant="contained" color="secondary" onClick={handleEdit} fullWidth>
-                                        Edit
+                            <Typography variant="h4" gutterBottom>
+                                EDIT DETAILS
+                            </Typography>
+                            <form>
+                                <div>
+                                    <TextField
+                                        type="text"
+                                        label='Name'
+                                        name="name"
+                                        value={patientDetails.name}
+                                        fullWidth
+                                        margin="normal"
+                                        placeholder={patientDetails.name}
+                                        onChange={handleChange}
+                                        disabled={!isEditing} />
+                                </div>
+                                <div>
+                                    <TextField
+                                        type="email"
+                                        label="Email"
+                                        margin="normal"
+                                        fullWidth
+                                        name="email"
+                                        value={patientDetails.email}
+                                        placeholder={patientDetails.email} disabled />
+                                </div>
+                                <div>
+                                    <TextField
+                                        type="text"
+                                        label="Phone No"
+                                        fullWidth
+                                        name="phoneNo"
+                                        margin="normal"
+                                        value={patientDetails.phoneNo}
+                                        placeholder={patientDetails.phoneNo}
+                                        onChange={handleChange}
+                                        disabled={!isEditing} />
+                                </div>
+                                <div>
+                                    <TextField type="text"
+                                        label="Address"
+                                        fullWidth
+                                        name="address"
+                                        margin="normal"
+                                        value={patientDetails.address}
+                                        placeholder={patientDetails.address}
+                                        onChange={handleChange}
+                                        disabled={!isEditing} />
+                                </div>
+                                <div>
+                                    <TextField type="text"
+                                        label="Blood Group"
+                                        fullWidth
+                                        name="bloodGroup"
+                                        margin="normal"
+                                        value={patientDetails.bloodGroup}
+                                        onChange={handleChange}
+                                        disabled={!isEditing} />
+                                </div>
+                                <div>
+                                    <TextField type="password"
+                                        label="Password"
+                                        fullWidth
+                                        name="password"
+                                        margin="normal"
+                                        value={patientDetails.password}
+                                        onChange={handleChange}
+                                        disabled={!isEditing} />
+                                </div>
+                            </form>
+                            {!isEditing && (
+                                <Button sx={{ backgroundColor: "#1572a1", color: 'white', marginTop: '20px', padding: '10px' }}
+                                    variant="contained" onClick={handleEdit} fullWidth>
+                                    Edit
+                                </Button>
+                            )}
+                            {isEditing && (
+                                <>
+                                    <Button variant="contained" sx={{ backgroundColor: "#1572a1", color: 'white', marginTop: '20px', padding: '10px' }}
+                                        onClick={handleEdit}>
+                                        Cancel
                                     </Button>
-                                )}
-                                {isEditing && (
-                                    <>
-                                        <Button variant="contained" color="secondary" onClick={handleEdit}>
-                                            Cancel
-                                        </Button>
-                                        <Button variant="contained" color="secondary" onClick={handleUpdate}>
-                                            Update
-                                        </Button>
-                                    </>
-                                )}
+                                    <Button variant="contained" sx={{ backgroundColor: "#1572a1", color: 'white', marginTop: '20px', padding: '10px' }}
+                                        onClick={handleUpdate}>
+                                        Update
+                                    </Button>
+                                </>
+                            )}
                         </Box>
                         <Box className="appointments" sx={{
                             position: 'absolute',
@@ -220,17 +223,16 @@ function PatientDashboard(props) {
 
                         }}>
                             <Typography variant="h4" gutterBottom color={"black"}>
-                                    APPOINTMENTS
-                                </Typography>
+                                APPOINTMENTS
+                            </Typography>
                             <ul>
                                 {appointments.map((appointment) => {
                                     if (appointment.patientEmail === usingname) {
                                         return (
-                                            <li key={appointment._id} style={{color: 'black'}}>
+                                            <li key={appointment._id} style={{ color: 'black' }}>
                                                 Date: {appointment.date} Time: {appointment.time} Doctor: {appointment.doctor}
-                                                <Button variant="contained" color="secondary" sx={{ mr: 1, position: 'relative', right: '0px' }} onClick={() => handleReschedule(appointment._id)}>Reschedule
-                                                </Button>
-                                                <Button variant="contained" color="secondary" sx={{ mr: 1, position: 'relative', right: '0px' }} onClick={() => handleDelete(appointment._id)}>Delete</Button>
+
+                                                <Button variant="contained" color="secondary" sx={{ position: 'rekative', backgroundColor: "#1572a1", color: 'white', marginLeft: '10px' }} onClick={() => handleDelete(appointment._id)}>Delete</Button>
                                             </li>
                                         );
                                     }
@@ -241,11 +243,11 @@ function PatientDashboard(props) {
 
                             <Box className="bookings" sx={{ textAlign: 'center' }}>
                                 <Link to={`/p-appointment`} style={{ textDecoration: 'none' }}>
-                                    <Button variant="contained" color="secondary" sx={{ mr: 1 }}>
+                                    <Button variant="contained" sx={{alignContent: 'space-around' ,mr: 1, position: 'relative', right: '0px', backgroundColor: "#1572a1", color: 'white', marginTop: '20px', padding: '10px' }}>
                                         Book Appointment
                                     </Button>
                                 </Link>
-                                <Button variant="contained" color="secondary" onClick={handleHdp} sx={{ mr: 1 }}>
+                                <Button variant="contained"  onClick={handleHdp} sx={{mr: 1, position: 'relative', right: '0px', backgroundColor: "#1572a1", color: 'white', marginTop: '20px', padding: '10px' }}>
                                     Heart Disease Prediction
                                 </Button>
 
@@ -253,8 +255,8 @@ function PatientDashboard(props) {
                         </Box>
                     </div>
                     :
-    <p>You don't have access to this page.</p>
-}
+                    <p>You don't have access to this page.</p>
+            }
         </div >
     );
 }

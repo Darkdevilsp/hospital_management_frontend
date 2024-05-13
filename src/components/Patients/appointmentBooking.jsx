@@ -1,6 +1,29 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import back2 from "../../utils/back2.png"
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { styled } from '@mui/system';
+
+const StyledContainer = styled('div')({
+    display: 'flex',
+    backgroundImage: `url(${back2})`,
+    width: '100%',
+    height: '92vh',
+    alignItems: 'center',
+    justifyContent: 'center',
+});
+
+const StyledForm = styled('form')({
+    position: 'relative',
+    width: '400px',
+    color: 'black',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Transparent white background
+    padding: '20px',
+    borderRadius: '10px',
+    boxShadow: '0 3px 5px rgba(0, 0, 0, 0.2)', // Box shadow for a card-like appearance
+});
+
 
 function AppointmentBooking(props) {
     const [doctors, setDoctors] = useState([]);
@@ -8,8 +31,8 @@ function AppointmentBooking(props) {
     const [selectedDoctor, setSelectedDoctor] = useState("");
     const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
     const [timeSlots, setTimeSlots] = useState([]);
-    const navigate=useNavigate()
-    const { user,setuser, usingname,setUsingname } = props;
+    const navigate = useNavigate()
+    const { user, setuser, usingname, setUsingname } = props;
 
     useEffect(() => {
         const fetchDoctors = async () => {
@@ -59,18 +82,17 @@ function AppointmentBooking(props) {
         // Send selected data to the backend
         try {
             const response = await axios.post("http://localhost:4000/bookappointment", {
-                patient:usingname,
+                patient: usingname,
                 date: selectedDate,
                 doctor: selectedDoctor,
                 timeSlot: selectedTimeSlot
             });
             console.log("Appointment booked:", response.data);
-            if(response.data==="Added successfully")
-            {
+            if (response.data === "Added successfully") {
                 alert("Added successfully")
                 navigate(`/p-Dashboard`)
             }
-            else{
+            else {
                 alert("Failed to book")
             }
 
@@ -80,34 +102,46 @@ function AppointmentBooking(props) {
     };
 
     return (
-        <div style={{displa}}>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="startDate">Date</label>
-                <input
+        <StyledContainer>
+            <StyledForm onSubmit={handleSubmit}>
+                <InputLabel htmlFor="startDate">Date</InputLabel>
+                <TextField
                     type="date"
                     name="startDate"
-                    min={new Date().toISOString().split("T")[0]}
+                    inputProps={{ min: new Date().toISOString().split("T")[0] }}
                     required
                     onChange={handleDateChange}
+                    fullWidth
+                    margin="normal"
                 />
-                <label htmlFor="doctors">Select Doctor</label>
-                <select onChange={handleDoctorChange} required>
-                    <option value="">Select a doctor</option>
-                    {doctors.map((doctor) => (
-                        <option key={doctor._id} value={doctor.email}>{doctor.name}</option>
-                    ))}
-                </select>
-                <label htmlFor="timeSlots">Select Time Slot</label>
-                <select onChange={handleTimeSlotChange} required>
-                    <option value="">Select a time slot</option>
-                    {timeSlots.map((slot) => (
-                        <option key={slot} value={slot}>{slot}</option>
-                    ))}
-                </select>
-                <br/>
-                <button type="submit">Book Appointment</button>
-            </form>
-        </div>
+
+                <FormControl fullWidth margin="normal">
+                    <InputLabel>Select Doctor</InputLabel>
+                    <Select onChange={handleDoctorChange} required>
+                        <MenuItem value="">Select a doctor</MenuItem>
+                        {doctors.map((doctor) => (
+                            <MenuItem key={doctor._id} value={doctor.email}>{doctor.name}</MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+
+                <FormControl fullWidth margin="normal">
+                    <InputLabel>Select Time Slot</InputLabel>
+                    <Select onChange={handleTimeSlotChange} required>
+                        <MenuItem value="">Select a time slot</MenuItem>
+                        {timeSlots.map((slot) => (
+                            <MenuItem key={slot} value={slot}>{slot}</MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+
+                <Button type="submit" fullWidth sx={{ backgroundColor: "#1572a1", color: 'white', marginTop: '20px', padding: '10px' }}
+                >
+                    Book Appointment
+                </Button>
+            </StyledForm>
+        </StyledContainer>
+
     );
 }
 

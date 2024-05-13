@@ -90,7 +90,7 @@ const ManagementLogin = (props) => {
                                 <Button
                                     type="submit"
                                     variant="contained"
-                                    color="secondary"
+                                    sx={{ backgroundColor: "#1572a1", color: 'white', marginTop: '20px', padding: '10px'}}
                                     fullWidth
                                 >
                                     Login

@@ -28,7 +28,7 @@ body{
     font-weight: bold;
     padding: 8px 16px; /* Adjust padding */
     cursor: pointer;
-    margin-right: "10px";
+    margin-right: 10px;
     transition: background-color 0.3s; /* Smooth transition for background color */
 }
 

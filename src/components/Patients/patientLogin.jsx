@@ -47,7 +47,6 @@ function PatientLogin(props) {
             alignItems: 'center',
             position: 'relative',
             minHeight: '92vh',
-            marginTop: '2px',
             fontFamily: 'Arial Narrow, sans-serif'
         }}>
             {user === "patient" ? (
@@ -68,7 +67,7 @@ function PatientLogin(props) {
                             color: 'black'
                         }}
                     >
-                        <Typography variant="h4" gutterBottom style={{fontFamily: '"Arial Narrow", Arial, sans-serif'}}>
+                        <Typography variant="h4" gutterBottom style={{ fontFamily: '"Arial Narrow", Arial, sans-serif' }}>
                             PATIENT LOGIN
                         </Typography>
                         <form onSubmit={handleLogin}>
@@ -94,7 +93,7 @@ function PatientLogin(props) {
                             <Button
                                 type="submit"
                                 variant="contained"
-                                color="secondary"
+                                sx={{ backgroundColor: "#1572a1", color: 'white', marginTop: '20px', padding: '10px'}}
                                 fullWidth
                             >
                                 Login

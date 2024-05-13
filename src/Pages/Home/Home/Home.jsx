@@ -7,10 +7,15 @@ import Feedback from '../Feedback/Feedback';  // Import the AlzheimerPrediction 
 import RadialChart from '../PatientAgeChart/RadialChart';
 import TodaysDoctors from '../TodaysDoctors/TodaysDoctors';
 import UserInfo from '../UserInfo/UserInfo';
+import back2 from "../../../utils/back2.png"
 
 const Home = () => {
   return (
-    <div style={{ margin: '30px ', marginBottom: '82px' }}>
+    <div style={{
+      backgroundImage: `url(${back2})`,
+      marginBottom: '82px', width: '1523px',
+      marginTop: '15px'
+    }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
           <Banner></Banner>
@@ -24,9 +29,9 @@ const Home = () => {
             borderRadius: '0.3rem',
             boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.05)',
           }}>
-            
-              <Typography sx={{ fontSize: '1.2rem', textAlign: 'left', paddingLeft: '20px', paddingTop: '12px', fontFamily: 'monospace', color: 'black' }}><strong>Percentage of patients</strong></Typography>
-              <RadialChart ></RadialChart>
+
+            <Typography sx={{ fontSize: '1.2rem', textAlign: 'left', paddingLeft: '20px', paddingTop: '12px', fontFamily: 'monospace', color: 'black' }}><strong>Percentage of patients</strong></Typography>
+            <RadialChart ></RadialChart>
           </Box>
         </Grid>
       </Grid>

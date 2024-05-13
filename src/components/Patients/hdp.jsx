@@ -115,7 +115,7 @@ const Hdp = () => {
                             <option value="3">Asymptomatic</option>
                         </select>
                     </div>
-                    <div style={{marginTop: '15%'}}>
+                    <div style={{ marginTop: '15%' }}>
                         <label htmlFor="trestbps">Resting Blood Pressure</label>
                         <input type="text" id="trestbps" name="trestbps" value={formData.trestbps} onChange={handleChange}
                             placeholder="A number in range [94-200] mmHg" /><br />
@@ -131,7 +131,7 @@ const Hdp = () => {
                         <option value="0">Less than 120 mg/dl</option>
                     </select><br />
 
-                    <label htmlFor="restecg" style={{marginTop: '15px'}}>Resting ECG Results</label>
+                    <label htmlFor="restecg" style={{ marginTop: '15px' }}>Resting ECG Results</label>
                     <select id="restecg" name="restecg" value={formData.restecg} onChange={handleChange} style={{ width: '100%', padding: '10px' }}>
                         <option value="">----select option----</option>
                         <option value="0">Normal</option>
@@ -139,7 +139,7 @@ const Hdp = () => {
                         <option value="2">Probable or definite left ventricular hypertrophy</option>
                     </select><br />
 
-                    <label htmlFor="thalach" style={{marginTop: '15px'}}>Max Heart Rate</label>
+                    <label htmlFor="thalach" style={{ marginTop: '15px' }}>Max Heart Rate</label>
                     <input type="text" id="thalach" name="thalach" value={formData.thalach} onChange={handleChange}
                         placeholder="A number in range [71-202] bpm" /><br />
 
@@ -150,7 +150,7 @@ const Hdp = () => {
                         <option value="0">No</option>
                     </select><br />
 
-                    <label htmlFor="oldpeak" style={{marginTop: '15px'}}>ST Depression</label>
+                    <label htmlFor="oldpeak" style={{ marginTop: '15px' }}>ST Depression</label>
                     <input type="text" id="oldpeak" name="oldpeak" value={formData.oldpeak} onChange={handleChange}
                         placeholder="ST depression, typically in [0-6.2]" /><br />
 
@@ -162,7 +162,7 @@ const Hdp = () => {
                         <option value="2">Downsloping</option>
                     </select><br />
 
-                    <label htmlFor="ca" style={{marginTop: '15px'}}>Number of Major Vessels</label>
+                    <label htmlFor="ca" style={{ marginTop: '15px' }}>Number of Major Vessels</label>
                     <input type="text" id="ca" name="ca" value={formData.ca} onChange={handleChange}
                         placeholder="Typically in [0-4]" /><br />
 
@@ -177,8 +177,7 @@ const Hdp = () => {
                         type="submit"
                         value="Predict"
                         variant="contained"
-                        color="secondary"
-                        fullWidth
+                        sx={{ backgroundColor: "#1572a1", color: 'white', marginTop: '20px', padding: '10px' }} fullWidth
                     >
                         Login
                     </Button>
