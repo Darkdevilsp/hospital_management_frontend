@@ -32,7 +32,7 @@ const Hdp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://127.0.0.1:5000/predict', {
+            const response = await fetch('http://127.0.0.1:6000/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -78,7 +78,8 @@ const Hdp = () => {
                 textAlign: 'left',
             }}>
                 <h1 style={{
-                    color: "purple"
+                    color: "purple",
+                    textAlign: 'center'
                 }}>Heart Disease Form</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="age">Age</label>

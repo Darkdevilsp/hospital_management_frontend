@@ -88,10 +88,9 @@ const App = () => {
                     <Route path={"/p-hdp"} element={<Hdp user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />}></Route>
                 </Routes>
             </div>
-            <footer>
-                <p>copyright @ MIRIYALA CHARAN SAI and ROUTU SRINIVAS PRASAD</p>
-
-            </footer>
+            <div style={{padding: '0', margin: '0', backgroundColor: 'whitesmoke'}}>
+                <p style={{textAlign:'center', backgroundColor: 'whitesmoke', color: 'black'}}>&#169; made with &#10084; by mc&sp</p>
+            </div>
         </div>
     );
 };
