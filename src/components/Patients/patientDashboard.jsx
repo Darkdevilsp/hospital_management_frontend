@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Box, Container, TextField, Button, Typography } from '@mui/material';
+import back2 from "../../utils/back2.png"
 
 function PatientDashboard(props) {
     const { user, setuser, usingname, setUsingname } = props;
@@ -98,7 +99,12 @@ function PatientDashboard(props) {
 
     return (
         <div className="patient-dashboard" style={{
+            backgroundImage: `url(${back2})`,
             position: 'relative',
+            color: 'black',
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'auto',
             fontFamily: 'Arial Narrow, sans-serif'
         }}>
             {user === "None" ?
@@ -106,7 +112,7 @@ function PatientDashboard(props) {
                 :
                 user === "patient" ?
                     <div maxWidth="lg">
-                        <Typography sx={{ marginTop: '10px' }} variant="h5" gutterBottom>
+                        <Typography sx={{ marginTop: '10px', color: 'black' }} variant="h5" gutterBottom>
                             Welcome {usingname}
                         </Typography>
                         <Box className="patient-details" sx={{
@@ -117,6 +123,7 @@ function PatientDashboard(props) {
                             left: '860px',
                             textAlign: 'center',
                             color: 'black',
+                            overflow: "auto",
                             position: 'relative',
                         }}>
                                 <Typography variant="h4" gutterBottom>
@@ -212,14 +219,14 @@ function PatientDashboard(props) {
                             top: '100px',
 
                         }}>
-                            <Typography variant="h4" gutterBottom>
+                            <Typography variant="h4" gutterBottom color={"black"}>
                                     APPOINTMENTS
                                 </Typography>
                             <ul>
                                 {appointments.map((appointment) => {
                                     if (appointment.patientEmail === usingname) {
                                         return (
-                                            <li key={appointment._id}>
+                                            <li key={appointment._id} style={{color: 'black'}}>
                                                 Date: {appointment.date} Time: {appointment.time} Doctor: {appointment.doctor}
                                                 <Button variant="contained" color="secondary" sx={{ mr: 1, position: 'relative', right: '0px' }} onClick={() => handleReschedule(appointment._id)}>Reschedule
                                                 </Button>

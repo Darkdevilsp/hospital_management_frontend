@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-
+import "./doctordashboard.css"
 
 function DoctorDashboard(props) {
     const { user, usingname } = props;
@@ -102,7 +102,9 @@ function DoctorDashboard(props) {
                         </div>
                     </div>
                     <div>
-                        <h3>TODAY APPOINTMENTS</h3>
+                        <Typography variant="h5" gutterBottom>
+                            TODAY'S APPOINTMENTS
+                        </Typography>
                         <ul>
                             {appointments.map((appointment) => {
                                 if (appointment.doctor === usingname) {

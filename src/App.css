@@ -3,7 +3,7 @@ body{
     margin: 0;
 }
 .topnav {
-    background-color: #6a5b7b; /* Set navbar color to match the theme */
+    background-color: rgba(21,114,161,255); /* Set navbar color to match the theme */
     overflow: hidden;
     padding: 8px 16px; /* Adjust padding */
     display: flex; /* Use flexbox for layout */
@@ -18,21 +18,23 @@ body{
 }
 
 .topnav a:hover {
-    color: #6C5B7B; /* Change text color on hover */
+    color: whitesmoke; /* Change text color on hover */
 }
 
 .topnav button {
-    background-color: #6C5B7B; /* Set button color to match navbar */
-    color: white;
+    background-color: #ffffff; /* Set button color to match navbar */
+    color:#1572a1;
     border: none;
+    font-weight: bold;
     padding: 8px 16px; /* Adjust padding */
     cursor: pointer;
+    margin-right: "10px";
     transition: background-color 0.3s; /* Smooth transition for background color */
 }
 
 .topnav button:hover {
     background-color: white; /* Change button color on hover */
-    color: #6C5B7B; /* Change text color on hover */
+    color: #24477d; /* Change text color on hover */
 }
 
 

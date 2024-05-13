@@ -47,6 +47,7 @@ function PatientLogin(props) {
             alignItems: 'center',
             position: 'relative',
             minHeight: '92vh',
+            marginTop: '2px',
             fontFamily: 'Arial Narrow, sans-serif'
         }}>
             {user === "patient" ? (

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import "./doctor.css"; // Import CSS file for styling
+import { Box, Button, Typography } from "@mui/material";
 
 function Doctors() {
     const [doctors, setDoctors] = useState([]);
@@ -53,11 +54,10 @@ function Doctors() {
     };
 
     return (
-        <div className="container">
+        <div className="container" style={{justifyContent: 'center', position: 'relative', left: '30%', width: '600px', background: 'white', marginTop: '5%', color: 'black'}}>
             <div className="header">
                 <h2>Total Doctors: {doctorsCount}</h2>
             </div>
-            <br/>
             <div>
                 <input
                     type="text"
@@ -66,19 +66,20 @@ function Doctors() {
                     onChange={handleSearchInputChange}
                 />
             </div>
-            <Link to={`/m-doctorSignup`}><button>Add Doctor</button></Link>
+            <Link to={`/m-doctorSignup`}><Button variant="contained"
+                        color="secondary" fullWidth>Add Doctor</Button></Link>
             {username === "admin" && <button>Doctor requests</button>}
             <hr />
-            <h1>Doctors</h1>
+            <Typography variant="h5" gutterBottom>Doctors</Typography>
             {searchResultFound ? (
-                <div>
+                <Box>
                     {doctors.map((doctor) => (
                         <div key={doctor._id} className="doctorCard">
                             <li>{doctor.name}
-                            <button onClick={() => handleDeleteDoctor(doctor._id)}>Delete</button></li>
+                            <Button color="secondary" sx={{position: 'relative', right: '0px'}} onClick={() => handleDeleteDoctor(doctor._id)}>Delete</Button></li>
                         </div>
                     ))}
-                </div>
+                </Box>
             ) : (
                 <p>No doctors found.</p>
             )}

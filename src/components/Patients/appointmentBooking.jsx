@@ -80,7 +80,7 @@ function AppointmentBooking(props) {
     };
 
     return (
-        <div>
+        <div style={{displa}}>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="startDate">Date</label>
                 <input

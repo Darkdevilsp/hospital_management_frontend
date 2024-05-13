@@ -37,9 +37,9 @@ const App = () => {
                 <Link to="/"><button>HOME</button></Link>
                 {user === "None" ? (
                     <div>
-                        <Link to="/patientLogin"><button>PATIENT LOGIN</button></Link>
-                        <Link to="/doctorLogin"><button>DOCTOR LOGIN</button></Link>
-                        <Link to="/managementLogin"><button>MANAGEMENT LOGIN</button></Link>
+                        <Link to="/patientLogin"><button style={{marginLeft: '10px'}}>PATIENT LOGIN</button></Link>
+                        <Link to="/doctorLogin"><button style={{marginLeft: '10px'}}>DOCTOR LOGIN</button></Link>
+                        <Link to="/managementLogin"><button style={{marginLeft: '10px'}}>MANAGEMENT LOGIN</button></Link>
                     </div>
                 ) : user === "management" || user === "Admin" ? (
                     <div>
@@ -52,7 +52,7 @@ const App = () => {
                 ) : user === "patient" ?
                     (
                         <div>
-                            <Link to="/p-Dashboard"><button>DASHBOARD</button> </Link>
+                            <Link to="/p-Dashboard"><button >DASHBOARD</button> </Link>
                             <Link to="/"><button onClick={handleLogout}>LOGOUT</button></Link>
                         </div>
 
