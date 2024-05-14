@@ -51,8 +51,8 @@ const Feedback = () => {
         </form>
         {predictionResult && (
           <div>
-            <h4>Prediction Result:</h4>
-            <p>{predictionResult}</p>
+            <h4 style={{ color: 'black'}}>Prediction Result:</h4>
+            <p style={{ color: 'black'}}>{predictionResult}</p>
           </div>
         )}
       </Box>
