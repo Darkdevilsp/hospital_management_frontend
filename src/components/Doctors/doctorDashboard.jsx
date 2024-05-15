@@ -55,7 +55,7 @@ function DoctorDashboard(props) {
             ) : user === 'doctor' ? (
                 <div>
                     <Typography variant="h5" gutterBottom>
-                        Welcome {usingname}
+                        Welcome {doctorDetails.name}
                     </Typography>
 
                     <div style={{ display: 'flex', gap: '20px', justifyContent: 'space-around', marginTop: '5%' }}>

@@ -5,19 +5,43 @@ import { GiCherish } from "react-icons/gi";
 import { FiUsers } from "react-icons/fi";
 import { TbBed } from "react-icons/tb";
 import { MdPersonPin } from "react-icons/md";
+import axios from "axios";
 
 const Banner = () => {
   const [doctorCount, setDoctorCount] = useState(0);
+  const [patientCount,setPatientCount]=useState(0)
+  const [patients,setPatients]=useState()
+  const [doctor,setDoctors]=useState()
+  useEffect(() => {
+    const fetchPatients = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/allpatients");
+        setPatients(response.data);
+        console.log(patients)
+      } catch (error) {
+        alert("Unable to fetch the data. Please reload the page.");
+        console.error('Error fetching patients:', error);
+      }
+    };
+    fetchPatients();
+  }, []);
 
   useEffect(() => {
-    // Fetch the doctor count from your API or state
-    // Example: fetch("http://localhost:5000/doctorCount")
-    //   .then((res) => res.json())
-    //   .then((data) => setDoctorCount(data.count));
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/getdoctors");
+        let filteredDoctors = response.data;
+        setDoctors(filteredDoctors);
+        setDoctorCount(filteredDoctors.length)
+      } catch (error) {
+        alert("Unable to fetch doctors");
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
-    // For now, using a static value for demonstration
-    setDoctorCount(3);
-  }, []); // Make sure to add dependencies if needed
+
 
   return (
     <Box>
@@ -46,9 +70,7 @@ const Banner = () => {
               <p>Doctors</p>
             </div>
           </Box>
-          <Typography>
-            {`${doctorCount} doctor${doctorCount !== 1 ? 's' : ''} joined today`}
-          </Typography>
+
         </Paper>
         <Paper elevation={2} sx={{ padding: '1rem', width: '14rem' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
@@ -62,13 +84,11 @@ const Banner = () => {
               }} />
             </div>
             <div>
-              <Typography sx={{ fontWeight: '800' }}>155K</Typography>
+              <Typography sx={{ fontWeight: '800' }}>{patientCount}</Typography>
               <p>Patients</p>
             </div>
           </Box>
-          <Typography>
-            122 new patients admitted
-          </Typography>
+
         </Paper>
         <Paper elevation={2} sx={{ padding: '1rem', width: '14rem' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
@@ -83,12 +103,10 @@ const Banner = () => {
             </div>
             <div>
               <Typography sx={{ fontWeight: '800' }}>452</Typography>
-              <p>Stuffs</p>
+              <p>Staffs</p>
             </div>
           </Box>
-          <Typography>
-            12 stuffs are on vacation
-          </Typography>
+
         </Paper>
 
         <Paper elevation={2} sx={{ padding: '1rem', width: '14rem' }}>

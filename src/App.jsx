@@ -15,6 +15,7 @@ import Doctors from "./components/Management/doctors.jsx";
 import Staff from "./components/Management/Staff.jsx";
 import ManagementDashboard from "./components/Management/managementDashboard.jsx";
 import Hdp from "./components/Patients/hdp.jsx";
+import Patients from "./components/Management/patients.jsx";
 
 const App = () => {
     const [user, setUser] = useState(sessionStorage.getItem('user') || "None");
@@ -46,7 +47,9 @@ const App = () => {
                         <Link to="/m-Dashboard"><button>DASHBOARD</button> </Link>
                         <Link to="/m-patients"><button>PATIENTS</button></Link>
                         <Link to="/m-doctors"><button>DOCTORS</button></Link>
-                        <Link to="/m-staff"><button>STAFF</button></Link>
+                        {/*<Link to="/m-staff">
+                            <button>STAFF</button>
+                        </Link>*/}
                         <Link to="/"><button onClick={handleLogout}>LOGOUT</button></Link>
                     </div>
                 ) : user === "patient" ?
@@ -86,6 +89,7 @@ const App = () => {
                     {/* <Route path="/m/:username/Dashboard" element={<App1 />} /> */}
                     <Route path="/m-Dashboard" element={<ManagementDashboard user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />} />
                     <Route path={"/p-hdp"} element={<Hdp user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} />}></Route>
+                    <Route path={"/m-patients"} element={<Patients user={user} setuser={setUser} usingname={usingname} setUsingname={setUsingname} /> } />
                 </Routes>
 
             </div>

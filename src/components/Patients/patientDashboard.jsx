@@ -113,7 +113,7 @@ function PatientDashboard(props) {
                 user === "patient" ?
                     <div maxWidth="lg">
                         <Typography sx={{ marginTop: '10px', color: 'black' }} variant="h5" gutterBottom>
-                            Welcome {usingname}
+                            Welcome {patientDetails.name}
                         </Typography>
                         <Box className="patient-details" sx={{
                             width: '40%',
